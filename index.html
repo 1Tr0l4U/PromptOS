@@ -1029,6 +1029,116 @@ mark.cp-roster-highlight{
   position:absolute;top:6px;right:10px;font-size:11px;font-weight:bold;color:#a01818;
 }
 #cg-customizeCard.cg-locked select{pointer-events:none;cursor:not-allowed}
+
+
+/* =====================================================
+   Creature Codex
+===================================================== */
+.cc-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 10px;background:var(--gray);border-bottom:1px solid var(--gray-dark)}
+.cc-toolbar-title{font-weight:bold;display:flex;align-items:center;gap:7px}
+.cc-toolbar-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.cc-filterbar{display:flex;gap:6px;flex-wrap:wrap;padding:7px 10px;background:#d9d9d9;border-bottom:1px solid #999}
+.cc-filterbar .field95{max-width:240px}
+.cc-layout{display:grid;grid-template-columns:190px 1fr;min-height:0;height:100%}
+.cc-sidebar{background:#d4d0c8;border-right:2px solid #808080;padding:8px;overflow:auto}
+.cc-sidebar-title{font-weight:bold;font-size:11px;margin-bottom:6px}
+.cc-side-btn{display:block;width:100%;text-align:left;margin-bottom:4px}
+.cc-side-btn.active{font-weight:bold;box-shadow:inset 1px 1px #000,inset -1px -1px #fff;background:#bfc0c0}
+.cc-main{min-width:0;display:flex;flex-direction:column;overflow:hidden;background:#fff}
+.cc-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;padding:10px;overflow:auto;align-content:start}
+.cc-card{background:#d4d0c8;border-top:2px solid #fff;border-left:2px solid #fff;border-right:2px solid #404040;border-bottom:2px solid #404040;padding:6px;cursor:pointer;min-height:110px}
+.cc-card:hover{background:#dfe8f4}
+.cc-card-image{height:115px;background:#111;overflow:hidden;border:2px inset #d4d0c8;margin-bottom:6px}
+.cc-card-image .cc-image{width:100%;height:100%;background-repeat:no-repeat;background-color:#111}
+.cc-card-name{font-weight:bold;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-card-sub{font-size:10px;color:#333;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-card-ratings{margin-top:5px;font-size:10px;line-height:1.4}
+.cc-danger{font-weight:bold;color:#8d1515}
+.cc-rarity{font-weight:bold;color:#4b287f}
+.cc-empty{padding:20px;text-align:center;font-size:12px;color:#555}
+.cc-detail{display:flex;flex-direction:column;min-height:0;height:100%;overflow:auto;background:#f5f5f5}
+.cc-detail-top{display:block;padding:12px;background:#d4d0c8;border-bottom:2px groove #fff}
+.cc-detail-image{height:280px;background:#111;border:3px inset #d4d0c8;overflow:hidden}
+.cc-detail-image .cc-image{width:100%;height:100%;background-repeat:no-repeat;background-color:#111}
+.cc-detail-gallery{position:relative;width:100%;height:360px;background:#111;border:3px inset #d4d0c8;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.cc-detail-gallery img{width:100%;height:100%;object-fit:contain;display:block;background:#111}
+.cc-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:34px;height:58px;font-size:24px;font-weight:bold;padding:0;display:flex;align-items:center;justify-content:center;background:rgba(192,192,192,.88);border:2px solid #404040;cursor:pointer;color:#000}
+.cc-gallery-arrow.left{left:8px}.cc-gallery-arrow.right{right:8px}
+.cc-gallery-arrow:active{border-color:#fff #404040 #404040 #fff}
+.cc-gallery-count{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.65);color:#fff;padding:3px 7px;font-size:10px;font-weight:bold;z-index:3}
+.cc-detail-heading{margin-top:8px}
+.cc-detail-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:7px 0 4px;font-size:11px}
+.cc-detail-meta .cc-danger,.cc-detail-meta .cc-rarity{font-size:11px}
+.cc-gallery-empty{color:#aaa;font-size:12px;font-style:italic}
+.cc-detail-heading h1{font-size:22px;margin:0 0 4px;text-transform:uppercase}
+.cc-type{font-size:11px;color:#555;margin-bottom:12px}
+.cc-statbox{background:#efefef;border:2px inset #d4d0c8;padding:8px;margin-bottom:8px}
+.cc-statlabel{font-size:10px;font-weight:bold;color:#555;text-transform:uppercase}
+.cc-statvalue{font-size:13px;font-weight:bold;margin-top:2px}
+.cc-danger-meter,.cc-rarity-stars{font-size:18px;letter-spacing:2px;margin-top:2px}
+.cc-danger-meter{color:#9b1c1c}
+.cc-rarity-stars{color:#7251a3}
+.cc-detail-body{padding:10px}
+.cc-note{background:#fffef0;border:1px solid #b7ad79;margin-bottom:9px;padding:8px;box-shadow:1px 1px 0 #888}
+.cc-note-title{font-weight:bold;font-size:12px;border-bottom:1px solid #b7ad79;padding-bottom:3px;margin-bottom:5px}
+.cc-note-text{font-size:11px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
+.cc-back{margin:8px 10px 0}
+/* Text on a creature's page can be highlighted and copied, the same way
+   the Character Portal's info boxes can. The image gallery and the Back
+   button stay click-only so clicking them never starts a selection. */
+.cc-detail-heading, .cc-detail-heading *,
+.cc-detail-meta, .cc-detail-meta *,
+.cc-detail-body, .cc-detail-body *{user-select:text;-webkit-user-select:text;cursor:text}
+/* Creature Re-Organizer — reuses the Character Roster Re-Organizer's .ro-* styles */
+#cc-ro-list .ro-name{width:150px}
+.cc-ro-thumb{width:24px;height:24px;flex-shrink:0;background-color:#111;border:1px solid #555}
+.cc-manager .cm-table-head{display:flex;background:#1b2a5e;color:#fff;font-size:11px;font-weight:bold;padding:6px 10px;gap:8px;flex-shrink:0}
+.cc-manager .cm-table-body{background:#fff;overflow:auto;flex:1}
+.cc-manager .cm-row{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border-bottom:1px solid #ddd;font-size:12px}
+.cc-manager .cm-row:hover{background:#eef3ff}
+.cc-manager .cc-mini-img{width:40px;height:40px;flex-shrink:0;background:#111;border:1px solid #555;background-repeat:no-repeat;background-position:50% 50%;background-size:cover}
+.cc-manager .cm-table-head > div:nth-child(1),.cc-manager .cm-row > div:nth-child(1){width:44px;flex-shrink:0}
+.cc-manager .cm-table-head > div:nth-child(2),.cc-manager .cm-row > div:nth-child(2){width:150px;flex-shrink:0}
+.cc-manager .cm-table-head > div:nth-child(3),.cc-manager .cm-row > div:nth-child(3){width:110px;flex-shrink:0}
+.cc-manager .cm-table-head > div:nth-child(4),.cc-manager .cm-row > div:nth-child(4){width:115px;flex-shrink:0}
+.cc-manager .cm-table-head > div:nth-child(5),.cc-manager .cm-row > div:nth-child(5){width:105px;flex-shrink:0}
+.cc-manager .cm-table-head > div:nth-child(6),.cc-manager .cm-row > div:nth-child(6){width:125px;flex-shrink:0}
+.cc-manager .cm-table-head > div:nth-child(7),.cc-manager .cm-row > div:nth-child(7){min-width:170px;flex:1}
+.cc-manager .cm-table-head > div:nth-child(5),.cc-manager .cm-row > div:nth-child(5){width:120px;flex-shrink:0}
+.cc-manager .cm-table-head > div:nth-child(6),.cc-manager .cm-row > div:nth-child(6){flex:1;min-width:150px}
+.cc-manager .cc-manager-actions{display:flex;gap:4px;flex-wrap:wrap}
+.cc-form select.field95{appearance:auto;-webkit-appearance:auto;background:#fff;color:#000}
+.cc-form input.field95,.cc-form textarea.field95,.cc-form select.field95{border-top:2px solid var(--gray-darker);border-left:2px solid var(--gray-darker);border-right:2px solid var(--gray-light);border-bottom:2px solid var(--gray-light);background:#fff;padding:4px 6px;font-family:inherit;font-size:12px;color:#000}
+.cc-form{display:flex;flex-direction:column;gap:6px}
+.cc-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.cc-form-section{border:2px groove #fff;background:#e7e7e7;padding:8px;margin-bottom:7px}
+.cc-form-section-title{font-weight:bold;font-size:11px;margin-bottom:7px}
+.cc-form textarea{min-height:72px;resize:vertical;font-family:inherit;font-size:11px}
+ .cc-form .field95{width:100%;box-sizing:border-box}
+.cc-editable-select{position:relative;width:100%;box-sizing:border-box}
+.cc-editable-select:after{content:"";position:absolute;right:3px;top:3px;width:18px;height:calc(100% - 6px);pointer-events:none;background:linear-gradient(#d4d0c8,#c0c0c0);border-left:1px solid #808080;box-shadow:inset 1px 1px #fff;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.cc-editable-select:before{content:"▼";position:absolute;z-index:2;right:8px;top:50%;transform:translateY(-50%);font-size:9px;line-height:1;color:#000;pointer-events:none}
+.cc-editable-select input.field95{appearance:none;-webkit-appearance:none;padding-right:28px}
+
+.cc-preview-row{display:grid;grid-template-columns:320px minmax(0,1fr);gap:10px;align-items:start}
+.cc-editor-preview{width:320px;height:180px;flex-shrink:0;background:#111;border:3px inset #d4d0c8;overflow:hidden}
+.cc-editor-preview .cc-image{width:100%;height:100%;background-repeat:no-repeat;background-color:#111}
+.cc-crop-viewport{width:320px;height:180px;max-width:100%;background:#111;border:3px inset #d4d0c8;overflow:hidden;touch-action:none;cursor:grab}
+.cc-crop-viewport:active{cursor:grabbing}
+.cc-crop-image{width:100%;height:100%;background-repeat:no-repeat;background-color:#111}
+.cc-zoom-row{display:flex;align-items:center;gap:8px}
+.cc-zoom-row input{flex:1}
+.cc-error{color:#9d1717;font-weight:bold;min-height:14px}
+.cc-world-note{font-size:10px;color:#555;margin-top:2px}
+@media(max-width:720px){
+  .cc-layout{grid-template-columns:1fr}
+  .cc-sidebar{max-height:105px;border-right:0;border-bottom:2px solid #808080}
+  .cc-detail-top{grid-template-columns:1fr}
+  .cc-detail-image{height:240px}
+  .cc-form-grid,.cc-preview-row{grid-template-columns:1fr}
+  .cc-editor-preview{width:100%;height:auto;aspect-ratio:16/9}
+}
+
 </style>
 </head>
 <body>
@@ -1053,6 +1163,12 @@ mark.cp-roster-highlight{
   <div class="icon" style="left:18px; top:318px" onmousedown="OS.startIconDrag(event,this)" ontouchstart="OS.startIconDrag(event,this)" ondblclick="OS.open('charportal')">
     <div class="glyph">🎭</div>
     <div class="label">Character Portal</div>
+  </div>
+
+
+  <div class="icon" style="left:118px; top:318px" onmousedown="OS.startIconDrag(event,this)" ontouchstart="OS.startIconDrag(event,this)" ondblclick="OS.open('creaturecodex')">
+    <div class="glyph">🐉</div>
+    <div class="label">Creature<br>Codex</div>
   </div>
 
   <div class="icon" style="left:18px; top:418px" onmousedown="OS.startIconDrag(event,this)" ontouchstart="OS.startIconDrag(event,this)" ondblclick="OS.open('mycomputer')">
@@ -1247,7 +1363,8 @@ NOTES
 - Add your own programs / icons here later!
 - can admin powers destroy worlds?
 
-- Last Character Portal update (10/3/2026, 11:17:08 PM): Vambrace added, Inaycke, Rividis edited, The Order of Rividis location/faction added
+- Last Character Portal update (10/10/2026, 4:57:59 PM): no changes
+- Last Creature Codex update (10/10/2026, 4:57:59 PM): X, need name, Need name added, need name, Need name edited
 </textarea>
     </div>
     <div class="statusbar">Ln 1, Col 1</div>
@@ -1888,6 +2005,243 @@ NOTES
     <div class="resize-handle" onmousedown="OS.startResize(event,'chargen')" ontouchstart="OS.startResize(event,'chargen')"></div>
   </div>
 
+
+
+  <!-- ============ WINDOW: Creature Codex ============ -->
+  <div class="window raised hidden" id="win-creaturecodex" data-default-width="780" data-default-height="620" style="left: 250px; top: 40px; width: 780px; height: 620px;">
+    <div class="titlebar" onmousedown="OS.startDrag(event,'creaturecodex')" ontouchstart="OS.startDrag(event,'creaturecodex')">
+      <div class="ttitle"><span>🐉</span><span>Creature Codex</span></div>
+      <div class="tbtns"><div class="tbtn" onclick="OS.minimize('creaturecodex')">_</div><div class="tbtn" onclick="OS.toggleMax('creaturecodex')">□</div><div class="tbtn" onclick="OS.close('creaturecodex')">✕</div></div>
+    </div>
+    <div class="menubar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
+    <div class="cc-toolbar">
+      <div class="cc-toolbar-title">📖 <span>Fantasy Creature Database</span></div>
+      <div class="cc-toolbar-actions"><button class="btn95" onclick="CreatureCodex.openExport()">📤 Export</button><button class="btn95" onclick="CreatureCodex.openManager()">🗂️ Creature Manager</button></div>
+    </div>
+    <div class="cc-filterbar">
+      <input id="cc-search" class="field95" type="text" placeholder="🔎 Search creatures..." oninput="CreatureCodex.render()">
+      <select id="cc-worldFilter" class="field95" onchange="CreatureCodex.setWorld(this.value)"><option value="SpellBroke">🌎 SpellBroke</option></select>
+      <select id="cc-locationFilter" class="field95" onchange="CreatureCodex.render()"><option value="">All Locations</option><option value="Chroma Caverns">Chroma Caverns</option><option value="Enchanted Forest">Enchanted Forest</option></select>
+      <button class="btn95" onclick="CreatureCodex.clearFilters()">Clear</button>
+    </div>
+    <div class="cc-layout">
+      <aside class="cc-sidebar" id="cc-sidebarFilters"><div class="cc-sidebar-title">DANGER</div><button class="btn95 cc-side-btn" data-filter="danger:3" onclick="CreatureCodex.toggleQuickFilter(this,'danger:3')">☠ Dangerous</button><button class="btn95 cc-side-btn" data-filter="danger:1" onclick="CreatureCodex.toggleQuickFilter(this,'danger:1')">☠ Harmless</button><div class="cc-sidebar-title">RARITY</div><button class="btn95 cc-side-btn" data-filter="rarity:4" onclick="CreatureCodex.toggleQuickFilter(this,'rarity:4')">★★★★ Very Rare</button><button class="btn95 cc-side-btn" data-filter="rarity:1" onclick="CreatureCodex.toggleQuickFilter(this,'rarity:1')">★ Common</button><div class="cc-sidebar-title">DIET</div><button class="btn95 cc-side-btn" data-filter="diet:Carnivore" onclick="CreatureCodex.toggleQuickFilter(this,'diet:Carnivore')">🍖 Carnivore</button><button class="btn95 cc-side-btn" data-filter="diet:Omnivore" onclick="CreatureCodex.toggleQuickFilter(this,'diet:Omnivore')">🌿🍖 Omnivore</button><button class="btn95 cc-side-btn" data-filter="diet:Special" onclick="CreatureCodex.toggleQuickFilter(this,'diet:Special')">✨ Special</button></aside>
+      <main class="cc-main">
+        <div id="cc-list" class="cc-list" style="display: grid;">
+      <div class="cc-card" onclick="CreatureCodex.openCreature('cr1791643956039mxvu2')">
+        <div class="cc-card-image"><div class="cc-image" style="background-image:url('https://s.mj.run/u8fSrl80wKE');background-size:350%;background-position:20.96774193548387% 34.48275862068965%;background-repeat:no-repeat;"></div></div>
+        <div class="cc-card-name">X</div>
+        <div class="cc-card-sub">Animal · Enchanted Forest</div>
+        <div class="cc-card-ratings"><span class="cc-danger">☠☠☠ Dangerous</span><br><span class="cc-rarity">★★★★ Very Rare</span></div>
+      </div>
+      <div class="cc-card" onclick="CreatureCodex.openCreature('cr17916440922027qk9b')">
+        <div class="cc-card-image"><div class="cc-image" style="background-image:url('https://s.mj.run/GBDLXzZGqt0');background-size:180%;background-position:80.3225806451613% 16.666666666666664%;background-repeat:no-repeat;"></div></div>
+        <div class="cc-card-name">need name</div>
+        <div class="cc-card-sub">Animal · Enchanted Forest</div>
+        <div class="cc-card-ratings"><span class="cc-danger">☠ Harmless</span><br><span class="cc-rarity">★ Common</span></div>
+      </div>
+      <div class="cc-card" onclick="CreatureCodex.openCreature('cr1791644217181bigbx')">
+        <div class="cc-card-image"><div class="cc-image" style="background-image:url('https://s.mj.run/8LwIO3Ueo9Y');background-size:125%;background-position:90.64516129032258% 67.24137931034483%;background-repeat:no-repeat;"></div></div>
+        <div class="cc-card-name">Need name</div>
+        <div class="cc-card-sub">Animal · Chroma Caverns</div>
+        <div class="cc-card-ratings"><span class="cc-danger">☠ Harmless</span><br><span class="cc-rarity">★ Common</span></div>
+      </div></div>
+        <div id="cc-detail" class="cc-detail" style="display:none"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ============ WINDOW: Creature Manager ============ -->
+  <div class="window raised cc-manager hidden" id="win-creaturemanager" data-default-width="820" data-default-height="570" style="left: 310px; top: 55px; width: 820px; height: 570px;">
+    <div class="titlebar" onmousedown="OS.startDrag(event,'creaturemanager')" ontouchstart="OS.startDrag(event,'creaturemanager')">
+      <div class="ttitle"><span>🗂️</span><span>Creature Manager</span></div>
+      <div class="tbtns"><div class="tbtn" onclick="OS.minimize('creaturemanager')">_</div><div class="tbtn" onclick="OS.toggleMax('creaturemanager')">□</div><div class="tbtn" onclick="OS.close('creaturemanager')">✕</div></div>
+    </div>
+    <div class="cc-toolbar">
+      <div class="cc-toolbar-title">🐾 <span>Creature Database</span></div>
+      <div class="cc-toolbar-actions"><button class="btn95" id="cc-reorgBtn" onclick="CreatureCodex.openReorganizer()">🔀 Launch Drag &amp; Drop</button><button class="btn95" onclick="CreatureCodex.openEditor()">➕ Add Creature</button><span id="cc-managerCount" class="cm-count">3 Creatures</span></div>
+    </div>
+    <div class="window-body" style="padding:0;display:flex;flex-direction:column;min-height:0">
+      <div class="cm-table-head">
+        <div>Img</div><div>Name</div><div>Danger</div><div>Rarity</div><div>World</div><div>Location</div><div>Actions</div>
+      </div>
+      <div id="cc-managerBody" class="cm-table-body"><div class="cm-row">
+      <div><div class="cc-mini-img" style="background-image:url('https://s.mj.run/u8fSrl80wKE');background-size:350%;background-position:20.96774193548387% 34.48275862068965%;background-repeat:no-repeat;"></div></div>
+      <div><b>X</b><div class="cc-world-note">Animal</div></div>
+      <div><span class="cc-danger">☠☠☠</span><div class="cc-world-note">Dangerous</div></div>
+      <div><span class="cc-rarity">★★★★</span><div class="cc-world-note">Very Rare</div></div>
+      <div>SpellBroke</div>
+      <div>Enchanted Forest</div>
+      <div class="cc-manager-actions"><button class="btn95" onclick="CreatureCodex.edit('cr1791643956039mxvu2')">✏️ Edit</button><button class="btn95" onclick="CreatureCodex.remove('cr1791643956039mxvu2')">🗑 Delete</button></div>
+    </div><div class="cm-row">
+      <div><div class="cc-mini-img" style="background-image:url('https://s.mj.run/GBDLXzZGqt0');background-size:180%;background-position:80.3225806451613% 16.666666666666664%;background-repeat:no-repeat;"></div></div>
+      <div><b>need name</b><div class="cc-world-note">Animal</div></div>
+      <div><span class="cc-danger">☠</span><div class="cc-world-note">Harmless</div></div>
+      <div><span class="cc-rarity">★</span><div class="cc-world-note">Common</div></div>
+      <div>SpellBroke</div>
+      <div>Enchanted Forest</div>
+      <div class="cc-manager-actions"><button class="btn95" onclick="CreatureCodex.edit('cr17916440922027qk9b')">✏️ Edit</button><button class="btn95" onclick="CreatureCodex.remove('cr17916440922027qk9b')">🗑 Delete</button></div>
+    </div><div class="cm-row">
+      <div><div class="cc-mini-img" style="background-image:url('https://s.mj.run/8LwIO3Ueo9Y');background-size:125%;background-position:90.64516129032258% 67.24137931034483%;background-repeat:no-repeat;"></div></div>
+      <div><b>Need name</b><div class="cc-world-note">Animal</div></div>
+      <div><span class="cc-danger">☠</span><div class="cc-world-note">Harmless</div></div>
+      <div><span class="cc-rarity">★</span><div class="cc-world-note">Common</div></div>
+      <div>SpellBroke</div>
+      <div>Chroma Caverns</div>
+      <div class="cc-manager-actions"><button class="btn95" onclick="CreatureCodex.edit('cr1791644217181bigbx')">✏️ Edit</button><button class="btn95" onclick="CreatureCodex.remove('cr1791644217181bigbx')">🗑 Delete</button></div>
+    </div></div>
+    </div>
+  </div>
+
+  <!-- ============ WINDOW: Creature Re-Organizer ============ -->
+  <div class="window raised hidden" id="win-creaturereorganizer" data-default-width="640" data-default-height="520" style="left: 190px; top: 70px; width: 640px; height: 520px;">
+    <div class="titlebar" onmousedown="OS.startDrag(event,'creaturereorganizer')" ontouchstart="OS.startDrag(event,'creaturereorganizer')">
+      <div class="ttitle"><span>🔀</span><span>Creature Re-Organizer</span></div>
+      <div class="tbtns">
+        <div class="tbtn" onclick="OS.minimize('creaturereorganizer')">_</div>
+        <div class="tbtn" onclick="OS.toggleMax('creaturereorganizer')">□</div>
+        <div class="tbtn" onclick="CreatureCodex.closeReorganizer()">✕</div>
+      </div>
+    </div>
+    <div class="ro-toolbar">
+      <input type="text" id="cc-ro-filter" class="field95 ro-filter-input" placeholder="🔍 Search by name, type, world, location..." oninput="CreatureCodex.renderReorganizerList()">
+      <button class="btn95" onclick="CreatureCodex.sortReorganizer('az')">Name: A to Z</button>
+      <button class="btn95" onclick="CreatureCodex.sortReorganizer('za')">Name: Z to A</button>
+      <button class="btn95" onclick="CreatureCodex.resetReorganizerOrder()">↺ Reset Order</button>
+      <button class="btn95 cp-saveBtn" onclick="CreatureCodex.saveReorganizerOrder()">💾 Save &amp; Apply Order</button>
+      <button class="btn95 cp-cancelBtn" onclick="CreatureCodex.closeReorganizer()">✕ Close</button>
+    </div>
+    <div class="window-body" style="padding:0;display:flex;flex-direction:column">
+      <div class="ro-list" id="cc-ro-list"></div>
+    </div>
+    <div class="statusbar">Drag the ⠿ handle, or use the arrow buttons, to reorder — then Save &amp; Apply.</div>
+    <div class="resize-handle" onmousedown="OS.startResize(event,'creaturereorganizer')" ontouchstart="OS.startResize(event,'creaturereorganizer')"></div>
+  </div>
+
+  <!-- ============ MODAL: Export Creature Data ============ -->
+  <div class="cp-modal-overlay" id="cc-exportOverlay" onclick="CreatureCodex.closeExport()">
+    <div class="window raised cp-modal-window hidden" id="win-creatureexport" onclick="event.stopPropagation()" style="transform: none; left: 570px; top: 278.5px; width: 460px; max-height: 715px;">
+      <div class="titlebar" onmousedown="OS.startDrag(event,'creatureexport')" ontouchstart="OS.startDrag(event,'creatureexport')">
+        <div class="ttitle"><span>📤</span><span>Export Creature Data (JSON)</span></div>
+        <div class="tbtns"><div class="tbtn" onclick="CreatureCodex.closeExport()">✕</div></div>
+      </div>
+      <div class="window-body">
+        <div class="sref-small">Select all &amp; copy, or use the buttons below — this JSON stores the Creature Codex data and can be backed up or loaded into another copy later.</div>
+        <textarea id="cc-exportText" class="field95 cp-export-textarea" readonly=""></textarea>
+        <div class="cp-modal-buttons">
+          <button class="btn95" onclick="CreatureCodex.closeExport()">Close</button>
+          <button class="btn95" id="cc-copyJsonBtn" onclick="CreatureCodex.copyExport(this)">📋 Copy JSON</button>
+          <button class="btn95" onclick="CreatureCodex.downloadExport()">💾 Download .json</button>
+          <button class="btn95" onclick="CreatureCodex.downloadFullHtml()">🖥️ Download Full HTML</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: Add/Edit Creature ============ -->
+  <div class="cp-modal-overlay" id="cc-editorOverlay" onclick="CreatureCodex.closeEditor()">
+    <div class="window raised cp-modal-window hidden" id="win-creatureeditor" onclick="event.stopPropagation()" style="transform: none; left: 490px; top: 8px; width: 620px; max-height: 715px;">
+      <div class="titlebar" onmousedown="OS.startDrag(event,'creatureeditor')" ontouchstart="OS.startDrag(event,'creatureeditor')">
+        <div class="ttitle"><span id="cc-editorIcon">✏️</span><span id="cc-editorTitle">Edit Creature</span></div>
+        <div class="tbtns"><div class="tbtn" onclick="CreatureCodex.closeEditor()">✕</div></div>
+      </div>
+      <div class="window-body" style="overflow:auto">
+        <div class="cc-form">
+          <div class="cc-form-section">
+            <div class="cc-form-section-title">BASIC INFORMATION</div>
+            <label class="sref-label">🐾 Creature Name:</label>
+            <input id="cc-inputName" class="field95" type="text" placeholder="e.g. Ash Wraith">
+            <div class="cc-form-grid">
+              <div><label class="sref-label">Creature Type:</label><select id="cc-inputType" class="field95" onchange="CreatureCodex.toggleNewChoice('type')"><option value="__NEW__">➕ Add new...</option><option value="Aberration">Aberration</option><option value="Animal">Animal</option><option value="Beast">Beast</option><option value="Construct">Construct</option><option value="Divine">Divine</option><option value="Elemental">Elemental</option><option value="Monster">Monster</option><option value="Plant">Plant</option><option value="Spirit">Spirit</option><option value="Undead">Undead</option><option value="Unknown">Unknown</option></select><input id="cc-inputTypeNew" class="field95 cc-new-choice" type="text" placeholder="Enter new creature type" style="display: none; margin-top: 4px;"></div>
+              <div><label class="sref-label">World:</label><select id="cc-inputWorld" class="field95" onchange="CreatureCodex.toggleNewChoice('world')"><option value="__NEW__">➕ Add new...</option><option value="SpellBroke">SpellBroke</option></select><input id="cc-inputWorldNew" class="field95 cc-new-choice" type="text" placeholder="Enter new world" style="display:none;margin-top:4px"></div>
+            </div>
+            <div style="margin-top:6px"><label class="sref-label">Location:</label><select id="cc-inputLocation" class="field95" onchange="CreatureCodex.toggleNewChoice('location')"><option value="__NEW__">➕ Add new...</option><option value="Chroma Caverns">Chroma Caverns</option><option value="Emberborn">Emberborn</option><option value="Enchanted Forest">Enchanted Forest</option><option value="Phantasma">Phantasma</option><option value="Tan sea">Tan sea</option></select><input id="cc-inputLocationNew" class="field95 cc-new-choice" type="text" placeholder="Enter new location" style="display:none;margin-top:4px"></div>
+          </div>
+
+          <div class="cc-form-section">
+            <div class="cc-form-section-title">IMAGE</div>
+            <div class="cc-preview-row">
+              <div id="cc-editorPreview" class="cc-editor-preview"><div class="cc-image" style="background-image: url(&quot;https://s.mj.run/8LwIO3Ueo9Y&quot;); background-size: 125% auto; background-position: 90.6452% 67.2414%; background-repeat: no-repeat;"></div></div>
+              <div>
+                <label class="sref-label">🖼️ External Creature Image URL:</label>
+                <input id="cc-inputImage" class="field95" type="text" placeholder="https://example.com/creature.jpg" oninput="CreatureCodex.updateEditorPreview()">
+                <button type="button" class="btn95" onclick="CreatureCodex.openCrop()" style="margin-top:6px">🔍 Adjust Creature Image</button>
+                <div class="cc-world-note">Uses the same external-image approach as the Character Portal. You can zoom and drag the image into position.</div>
+                <label class="sref-label" style="margin-top:8px">🖼️ Creature Gallery URLs:</label>
+                <textarea id="cc-inputGallery" class="field95" placeholder="Add multiple image URLs separated by spaces or line breaks. These are separate from the avatar above."></textarea>
+                <div class="cc-world-note">Each URL becomes a gallery image. Different aspect ratios are fitted without stretching or cropping.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cc-form-section">
+            <div class="cc-form-section-title">CLASSIFICATION</div>
+            <div class="cc-form-grid">
+              <div>
+                <label class="sref-label">Danger Level:</label>
+                <select id="cc-inputDanger" class="field95">
+                  <option value="1">☠ — Harmless</option><option value="2">☠☠ — Low Risk</option><option value="3">☠☠☠ — Dangerous</option><option value="4">☠☠☠☠ — Highly Dangerous</option><option value="5">☠☠☠☠☠ — Extreme Threat</option>
+                </select>
+              </div>
+              <div>
+                <label class="sref-label">Rarity:</label>
+                <select id="cc-inputRarity" class="field95">
+                  <option value="1">★ — Common</option><option value="2">★★ — Uncommon</option><option value="3">★★★ — Rare</option><option value="4">★★★★ — Very Rare</option><option value="5">★★★★★ — Legendary</option>
+                </select>
+              </div>
+              <div>
+                <label class="sref-label">Diet Type:</label>
+                <select id="cc-inputDietType" class="field95">
+                  <option value="Herbivore">🌿 Herbivore</option>
+                  <option value="Carnivore">🍖 Carnivore</option>
+                  <option value="Omnivore">🌿🍖 Omnivore</option>
+                  <option value="Special">✨ Special</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="cc-form-section">
+            <div class="cc-form-section-title">FIELD NOTES</div>
+            <label class="sref-label">💡 Concept:</label>
+            <textarea id="cc-inputConcept" class="field95" placeholder="What is the core idea or concept behind this creature?"></textarea>
+            <label class="sref-label">👁️ Appearance:</label>
+            <textarea id="cc-inputAppearance" class="field95" placeholder="What does it look like?"></textarea>
+            <label class="sref-label">🧠 Behaviour:</label>
+            <textarea id="cc-inputBehaviour" class="field95" placeholder="How does it behave? Is it social, aggressive, shy, curious, etc.?"></textarea>
+            <label class="sref-label">🌲 Habitat:</label>
+            <textarea id="cc-inputHabitat" class="field95" placeholder="What kind of environment does it live in?"></textarea>
+            <label class="sref-label">🍖 Diet:</label>
+            <textarea id="cc-inputDiet" class="field95" placeholder="What does it eat?"></textarea>
+            <label class="sref-label">✨ Extra:</label>
+            <textarea id="cc-inputExtra" class="field95" placeholder="Interesting traits, abilities, relationships, folklore, or other details."></textarea>
+          </div>
+          <div id="cc-editorError" class="cc-error"></div>
+          <div class="cp-modal-buttons">
+            <button class="btn95 cp-cancelBtn" onclick="CreatureCodex.closeEditor()">Cancel</button>
+            <button class="btn95 cp-saveBtn" onclick="CreatureCodex.save()">💾 Save Creature</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: Adjust Creature Image ============ -->
+  <div class="cp-modal-overlay" id="cc-cropOverlay" onclick="CreatureCodex.closeCrop()">
+    <div class="window raised cp-modal-window cp-small-modal hidden" id="win-creaturecrop" onclick="event.stopPropagation()" style="transform: none; left: 630px; top: 208px; width: 340px; max-height: 715px;">
+      <div class="titlebar" onmousedown="OS.startDrag(event,'creaturecrop')" ontouchstart="OS.startDrag(event,'creaturecrop')">
+        <div class="ttitle"><span>🔍</span><span>Adjust Creature Image</span></div>
+        <div class="tbtns"><div class="tbtn" onclick="CreatureCodex.closeCrop()">✕</div></div>
+      </div>
+      <div class="window-body">
+        <div class="sref-small" id="cc-cropHint">Drag the image to reposition it, use the slider to zoom.</div>
+        <div class="cc-crop-viewport" id="cc-cropViewport"><div class="cc-crop-image" id="cc-cropImage" style="background-image: url(&quot;https://s.mj.run/8LwIO3Ueo9Y&quot;); background-size: 125% auto; background-position: 90.6452% 67.2414%;"></div></div>
+        <div class="cc-zoom-row" style="margin-top:10px"><label class="sref-small" style="margin:0">Zoom:</label><input type="range" id="cc-cropZoom" min="100" max="400" step="5" value="100"><span id="cc-cropZoomLabel" class="sref-small" style="margin:0;font-weight:bold">125%</span></div>
+        <div class="cp-modal-buttons"><button class="btn95 cp-cancelBtn" onclick="CreatureCodex.closeCrop()">Cancel</button><button class="btn95 cp-saveBtn" onclick="CreatureCodex.saveCrop()">💾 Save Position</button></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ============ WINDOW: Character Portal ============ -->
   <div class="window raised hidden" id="win-charportal" data-default-width="640" data-default-height="640" style="left: 282px; top: 19px; width: 640px; height: 640px;">
     <div class="titlebar" onmousedown="OS.startDrag(event,'charportal')" ontouchstart="OS.startDrag(event,'charportal')">
@@ -1910,27 +2264,21 @@ NOTES
         </div>
       </div>
 
-      <div class="cp-worldtabs" id="cp-worldtabs"><div class="sref-tab">User OC's</div><div class="sref-tab active">SpellBroke</div></div>
+      <div class="cp-worldtabs" id="cp-worldtabs"><div class="sref-tab active">User OC's</div><div class="sref-tab">SpellBroke</div></div>
 
-      <div class="cp-locations-row" id="cp-locationsRow"><span class="cp-locations-label">📍 Location/Faction:</span><div class="cp-locations-icons"><div class="cp-location-icon-wrap"><div class="cp-location-icon" title="Phantasma" style="background-image:url('https://s.mj.run/IX4ONUxUBvY');background-size:400%;background-position:43.98148148148148% 34.72222222222222%;"></div></div><div class="cp-location-icon-wrap"><div class="cp-location-icon" title="Emberborn" style="background-image:url('https://s.mj.run/jbvlVpRcTwQ');background-size:400%;background-position:52.31481481481482% 43.51851851851852%;"></div></div><div class="cp-location-icon-wrap"><div class="cp-location-icon" title="Enchanted Forest" style="background-image:url('https://s.mj.run/S7QSG7AFj-U');background-size:315%;background-position:50% 48.148148148148145%;"></div></div><div class="cp-location-icon-wrap"><div class="cp-location-icon" title="Chroma Caverns" style="background-image:url('https://s.mj.run/-lNDe3MVCxE');background-size:255%;background-position:50% 50%;"></div></div><div class="cp-location-icon-wrap"><div class="cp-location-icon" title="Tan sea" style="background-image:url('https://s.mj.run/MtqtA11pTp8');background-size:400%;background-position:46.29629629629629% 58.7962962962963%;"></div></div><div class="cp-location-icon-wrap"><div class="cp-location-icon" title="Sunseeker Orcs" style="background-image:url('https://s.mj.run/pZqLhsQOECk');background-size:275%;background-position:50.925925925925924% 50%;"></div></div><div class="cp-location-icon-wrap"><div class="cp-location-icon" title="The Order of Rividis" style="background-image:url('https://s.mj.run/U_YUlT5JvnI');background-size:240%;background-position:50% 43.51851851851852%;"></div></div></div></div>
+      <div class="cp-locations-row" id="cp-locationsRow"></div>
 
-      <div class="cp-banner" id="cp-banner" style="background: linear-gradient(90deg, rgb(173, 75, 175), rgb(11, 31, 42));">
-      <div class="cp-avatar" id="cp-avatarBox"><div class="cp-avatar-img" style="background-image:url('https://s.mj.run/MjoPMBcvG4A'); background-size:180%; background-position:86.11111111111111% 0%;"></div></div>
+      <div class="cp-banner" id="cp-banner" style="background: linear-gradient(90deg, rgb(0, 0, 0), rgb(11, 31, 42));">
+      <div class="cp-avatar" id="cp-avatarBox"><div class="cp-avatar-img" style="background-image:url('https://s.mj.run/34IG_syTkmk'); background-size:310%; background-position:16.20370370370371% 10.648148148148147%;"></div></div>
       <div class="cp-banner-text">
-        <div class="cp-banner-name">Vermin</div>
+        <div class="cp-banner-name">Victor</div>
         <div class="cp-banner-role"></div>
       </div>
       
-      <div class="cp-banner-locations">
-        
-          <div class="cp-location-icon cp-banner-location-icon" title="Phantasma" data-loc-id="loc1789501621440zklag" style="background-image:url('https://s.mj.run/IX4ONUxUBvY');background-size:400%;background-position:43.98148148148148% 34.72222222222222%;"></div>
-        
-      </div>
-    
-      <a class="cp-portal-link" href="https://discord.com/channels/1066330825844609034/1217381512543080508" target="_blank" rel="noopener noreferrer">🌀 Character Portal</a>
+      <a class="cp-portal-link" href="https://discord.com/channels/1066330825844609034/1284576560204218448" target="_blank" rel="noopener noreferrer">🌀 Character Portal</a>
     </div>
 
-      <div class="cp-roster" id="cp-roster"><div class="cp-roster-btn btn95 cp-roster-selected">Vermin</div><div class="cp-roster-btn btn95">Tuli</div><div class="cp-roster-btn btn95">Roxy</div><div class="cp-roster-btn btn95">Gnarrin</div><div class="cp-roster-btn btn95">Gal</div><div class="cp-roster-btn btn95">Blobby</div><div class="cp-roster-btn btn95">Karl</div><div class="cp-roster-btn btn95">Mop</div><div class="cp-roster-btn btn95">Gnomen Gnuards</div><div class="cp-roster-btn btn95">Municipal Gnomes</div><div class="cp-roster-btn btn95">Flora</div><div class="cp-roster-btn btn95">Malusdictus</div><div class="cp-roster-btn btn95">Yona</div><div class="cp-roster-btn btn95">Veradros</div><div class="cp-roster-btn btn95">Florentia</div><div class="cp-roster-btn btn95">Azure</div><div class="cp-roster-btn btn95">K'Anohm</div><div class="cp-roster-btn btn95">Fungalmancer</div><div class="cp-roster-btn btn95">Allicto</div><div class="cp-roster-btn btn95">Enidae</div><div class="cp-roster-btn btn95">Piper</div><div class="cp-roster-btn btn95">Royo</div><div class="cp-roster-btn btn95">Tardev</div><div class="cp-roster-btn btn95">Nebevona &amp; Cezerona</div><div class="cp-roster-btn btn95">Rividis</div><div class="cp-roster-btn btn95">Inaycke</div><div class="cp-roster-btn btn95">Taedd</div><div class="cp-roster-btn btn95">Jordee</div><div class="cp-roster-btn btn95">Orun</div><div class="cp-roster-btn btn95">Gnight Rider</div><div class="cp-roster-btn btn95">Mira</div><div class="cp-roster-btn btn95">Festus</div><div class="cp-roster-btn btn95">Blenk</div><div class="cp-roster-btn btn95">Brekky</div><div class="cp-roster-btn btn95">Autumn</div><div class="cp-roster-btn btn95">The Crows</div><div class="cp-roster-btn btn95">Count Mountebank</div><div class="cp-roster-btn btn95">Orby</div><div class="cp-roster-btn btn95">Lilac</div><div class="cp-roster-btn btn95">Wizlard</div><div class="cp-roster-btn btn95">Croakius</div><div class="cp-roster-btn btn95">Cetea</div><div class="cp-roster-btn btn95">Theo</div><div class="cp-roster-btn btn95">Fukoro</div><div class="cp-roster-btn btn95">Shirahn</div><div class="cp-roster-btn btn95">Darahn</div><div class="cp-roster-btn btn95">Ghost lady</div><div class="cp-roster-btn btn95">Zarina</div><div class="cp-roster-btn btn95">Phaedra</div><div class="cp-roster-btn btn95">Kyla</div><div class="cp-roster-btn btn95">Kaze</div><div class="cp-roster-btn btn95">Grahan</div><div class="cp-roster-btn btn95">Aridess</div><div class="cp-roster-btn btn95">Bird</div><div class="cp-roster-btn btn95">Saskia</div><div class="cp-roster-btn btn95">Kraz</div><div class="cp-roster-btn btn95">K'Chaaz</div><div class="cp-roster-btn btn95">Chaaz'rad</div><div class="cp-roster-btn btn95">Vambrace</div></div>
+      <div class="cp-roster" id="cp-roster"><div class="cp-roster-btn btn95 cp-roster-selected">Victor</div><div class="cp-roster-btn btn95">Rhapsody</div><div class="cp-roster-btn btn95">1Tr0l4U</div><div class="cp-roster-btn btn95">Legal Beagle</div><div class="cp-roster-btn btn95">Drolanac</div><div class="cp-roster-btn btn95">TheFungimancer</div><div class="cp-roster-btn btn95">Lolosoon</div><div class="cp-roster-btn btn95">Gompasta</div><div class="cp-roster-btn btn95">Tanner</div><div class="cp-roster-btn btn95">Alara</div><div class="cp-roster-btn btn95">BlijeMark</div><div class="cp-roster-btn btn95">Bomba</div><div class="cp-roster-btn btn95">KinkyKong</div><div class="cp-roster-btn btn95">Ancient Chaos</div><div class="cp-roster-btn btn95">Snoopytimelord</div><div class="cp-roster-btn btn95">Xslayer</div><div class="cp-roster-btn btn95">PotatoPropagator</div><div class="cp-roster-btn btn95">Revelee</div><div class="cp-roster-btn btn95">Little Angry</div><div class="cp-roster-btn btn95">Katsumi</div><div class="cp-roster-btn btn95">Oswen</div><div class="cp-roster-btn btn95">MastaDon</div><div class="cp-roster-btn btn95">Amethystea</div><div class="cp-roster-btn btn95">Mayhair</div><div class="cp-roster-btn btn95">Ms.Unicorn</div></div>
 
       <div class="cp-infobox-row">
         <div class="cp-infobox">
@@ -1938,29 +2286,18 @@ NOTES
             <span>DESCRIPTION / INFO</span>
             <button class="cp-infobox-editBtn" id="cp-descEditBtn" onclick="CharPortal.toggleInlineEdit('description')" title="Edit">✏️</button>
           </div>
-          <div class="cp-infobox-content" id="cp-description">Updated prompt: Vermin is a shapeshifter made of black ferrofluid. Vermin is lanky with sharp facial features and has long dark black hair, large wide eyes with small pupils on tan skin face, large dark brown witch's hat (pointed crown, wide brim casting shadows on face if lit), short matching cloak, tight waist then a matching tattered skirt. Vermin has blackened limbs.</div>
+          <div class="cp-infobox-content" id="cp-description">(no description yet)</div>
         </div>
         <div class="cp-infobox">
           <div class="cp-infobox-title">
             <span>REFERENCES</span>
             <button class="cp-infobox-editBtn" id="cp-refsEditBtn" onclick="CharPortal.toggleInlineEdit('references')" title="Edit">✏️</button>
           </div>
-          <div class="cp-infobox-content" id="cp-references">Half body front view: https://s.mj.run/HmkvDHYF3gA
+          <div class="cp-infobox-content" id="cp-references">Full body ref https://s.mj.run/b4n-WqvewUQ 
 
+Expression sheet https://s.mj.run/hpnEYBILkHM 
 
-Character sheet: https://s.mj.run/HXk1uj9J9Dk
-
-Back view ref neutral: https://s.mj.run/Q3VQFBJXiv4
-
-Back view ref aggro: 
-https://s.mj.run/NW-8lDF1ghI
-
-
-Shoes reference: https://s.mj.run/l5_XfAHD57s
-
-
-
-Old character sheet: https://s.mj.run/MNBW1JmZ2Mw</div>
+Full character sheet https://s.mj.run/VKrP9HNFn-0</div>
         </div>
       </div>
 
@@ -2196,14 +2533,14 @@ Old character sheet: https://s.mj.run/MNBW1JmZ2Mw</div>
     </div>
     <div class="cm-toolbar">
       <div class="cm-toolbar-title">
-        🌍 <span id="cm-worldLabel">SpellBroke</span>
+        🌍 <span id="cm-worldLabel">User OC's</span>
         <button class="btn95 cm-renameWorldBtn" onclick="CharPortal.openRenameWorldModal()" title="Rename this world">✏️ Rename World</button>
         <button class="btn95 cm-deleteWorldBtn" onclick="CharPortal.deleteCurrentWorld()" title="Delete this world" style="display: none;">🗑 Delete World</button>
       </div>
       <div class="cm-toolbar-actions">
         <button class="btn95" id="cm-reorgBtn" onclick="CharPortal.openReorganizer()" style="">🔀 Launch Drag &amp; Drop</button>
         <button class="btn95" id="cm-addBtn" onclick="CharPortal.openAddModal()">➕ Add Character</button>
-        <span class="cm-count" id="cm-count">59 Characters</span>
+        <span class="cm-count" id="cm-count">25 Characters</span>
       </div>
     </div>
     <div class="cm-modebar">
@@ -2223,132 +2560,8 @@ Old character sheet: https://s.mj.run/MNBW1JmZ2Mw</div>
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#ad4baf"></span>
-          Vermin
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc">Updated prompt: Vermin is a shapeshifter made of black ferrofluid. Vermin is lanky with sharp facial features and has long dark black hair, large wide eyes with small pupils on tan skin face, large dark brown witch's hat (pointed crown, wide brim casting shadows on face if lit), short matching cloak, tight waist then a matching tattered skirt. Vermin has blackened limbs.</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2ecc71"></span>
-          Tuli
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">the Gnome</div>
-          <div class="cm-role-desc">Prompt: Tuli is a young short elf woman. Tuli has large pointed ears, brown hair in a long braid, a green dress, and a matching pointed hat</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#df1634"></span>
-          Roxy
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">The potion Princess</div>
-          <div class="cm-role-desc">Prompt: goblin girl with elf ears, pale green skin, potions at the belt, witch hat, glowing orange eyes</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#e6c90a"></span>
-          Gnarrin
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Gnarrin the Gnomad</div>
-          <div class="cm-role-desc">Prompt: A gnome wizard with a red beard and rectangular glasses wearing blue robes and an oversized yellow floppy hat, carrying a walking stick.
-
-
-Alternative prompt: A heavy, middle aged gnome wizard dwarf with a long thick red beard. He is wearing a large oversized yellow wide rimmed witch hat. He has blue eyes. He is wearing blue wizard robes. He is wearing thick black rimmed square glasses. He is wearing large brown hiking boots. He is carrying a walking stick as a wizards staff</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#ce14db"></span>
-          Gal
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Wizard councel</div>
-          <div class="cm-role-desc">Galzanthrus 
-
-Prompt: angry old man in a purple cone hat and robe. he has white hair, a white beard</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#d728b7"></span>
-          Blobby
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
           <span class="cm-swatch" style="background:#000000"></span>
-          Karl
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Soot Devil</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#652ecc"></span>
-          Mop
+          Victor
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
@@ -2364,29 +2577,14 @@ Prompt: angry old man in a purple cone hat and robe. he has white hair, a white 
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#878787"></span>
-          Gnomen Gnuards
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Guards</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#fff824"></span>
-          Municipal Gnomes
+          <span class="cm-swatch" style="background:#d80e0e"></span>
+          Rhapsody
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
-          <div class="cm-role-desc"></div>
+          <div class="cm-role-desc">Character name is Ryo
+
+Leveling up version prompt: A young blue eyed anime woman with long, wavy platinum blonde hair and a single red feather hair clip. She is wearing round black wire-rimmed glasses that are perfectly round, a blue graphic t-shirt featuring a cartoon fox sleeping on a keyboard, an oversized open rust-red cardigan, black skinny jeans with ripped knees, and maroon sneakers.</div>
         </div>
         <div class="cm-col-actions">
           <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
@@ -2398,12 +2596,14 @@ Prompt: angry old man in a purple cone hat and robe. he has white hair, a white 
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#d79119"></span>
-          Flora
+          <span class="cm-swatch" style="background:#1dd3d0"></span>
+          1Tr0l4U
         </div>
         <div class="cm-col-role">
-          <div class="cm-role-title">Flora Merrifield</div>
-          <div class="cm-role-desc"></div>
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Character name Sir Sizzleton
+
+prompt: Red dragon that wears a black top hat with white stripe, a turquoise bow tie, and has a curled black moustache. He has a cream-colored underbelly, red wing with purple inner wings with, and spikes along his back and has fish like grills as ears</div>
         </div>
         <div class="cm-col-actions">
           <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
@@ -2416,100 +2616,10 @@ Prompt: angry old man in a purple cone hat and robe. he has white hair, a white 
         </div>
         <div class="cm-col-name">
           <span class="cm-swatch" style="background:#2ecc71"></span>
-          Malusdictus
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Malus the evil potion</div>
-          <div class="cm-role-desc">Prompt: a black cauldron with green smoke coming out, in the green smoke an evil black face with glowing green eyes
-
-different version: a black cauldron with green smoke coming out, in the green smoke evil glowing purple eyes</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#000000"></span>
-          Yona
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Voodoo dark elf witch</div>
-          <div class="cm-role-desc">Prompt: A dark fantasy female anime character : a voodoo witch dark elf casting a spell with both hands, swirling purple energy around her hands, sinister smile. Details of her face: yellow sharp cat slit eyes, dark skin, visible pointy elf ears. She has a messy short black bobcat haircut and two distinct thick black hair strands crossing each other directly over the center of her forehead. V-shaped bangs. She wears a black torn dress with a white chicken feather collar and bone trinkets, bandages covering her forearms, feet, ang legs. Thick outlines and vector art.</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#9c28d2"></span>
-          Veradros
+          Legal Beagle
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
-          <div class="cm-role-desc">Prompt: a mummy wrapped in white linen and wearing a black robe with thorny purple roses covering his body </div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2ecc71"></span>
-          Florentia
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Goddess</div>
-          <div class="cm-role-desc">Prompt: Anime middle-aged woman with ginger curly hair, with green eyes, wearing a flowing long flower green kirtle dress and a flower crown
-
-
-alternative embroidered dress: Anime middle-aged woman with ginger curly hair, with green eyes, wearing a flowing long embroidered flower green kirtle dress and a flower crown</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#237dd1"></span>
-          Azure
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Angel</div>
-          <div class="cm-role-desc">Prompt: A anime male angel with short blue hair blue eyes white wings and white and gold armor</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#1c039b"></span>
-          K'Anohm
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">The Light-eater</div>
           <div class="cm-role-desc"></div>
         </div>
         <div class="cm-col-actions">
@@ -2522,11 +2632,28 @@ alternative embroidered dress: Anime middle-aged woman with ginger curly hair, w
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#11a64f"></span>
-          Fungalmancer
+          <span class="cm-swatch" style="background:#14617b"></span>
+          Drolanac
         </div>
         <div class="cm-col-role">
-          <div class="cm-role-title">The sloth</div>
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc"></div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#ffda24"></span>
+          TheFungimancer
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
           <div class="cm-role-desc">anthropomorphic tall sloth with mossy fur, long green mossy robes and a large mossy hood over it's head. a multitude of various colorful small mushrooms growing on his fur and hood. flat mushrooms on the shoulders and long thin mushrooms on the robes. --no belt, bag, amanita
 
 
@@ -2542,8 +2669,8 @@ prompt: sloth wearing a green hooded cloak with growing yellow magical mushrooms
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#ae0a12"></span>
-          Allicto
+          <span class="cm-swatch" style="background:#e65c00"></span>
+          Lolosoon
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
@@ -2559,8 +2686,112 @@ prompt: sloth wearing a green hooded cloak with growing yellow magical mushrooms
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#e641e1"></span>
-          Enidae
+          <span class="cm-swatch" style="background:#dbdf11"></span>
+          Gompasta
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Character name: Nia
+
+Just face prompt: Catgirl with short white messy hair, red eyes, red glasses
+
+
+with clothing: Catgirl with short white messy hair, red eyes, red glasses, wearing a blue hoodie over a yellow tshirt</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#1daef7"></span>
+          Tanner
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Prompt: happy chibi anime man with brown hair and brown eyes and cat ears wearing glasses and blue hoodie</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#cc2e2e"></span>
+          Alara
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Prompt: female anthropomorphic cat, green eyes, long black hair with red highlights, red bow tie bell collar, black and white fur, white tipped tail
+
+
+Alternative prompt: she is a fantasy character who is a female anthropomorphic black and white tuxedo sylvester cat. A cat with black fur on her face and body, and white markings on her throat and hands. She has black fur on her face in a two-tone pattern, with a white muzzle and a pink cat nose, she has green eyes, long straight black hair with red highlights and bangs. She is wearing a red bow tie bell collar. she has black and white fur and a black tail with a white tip. The end of her tail is white. wearing a white button-down shirt with a red bow tie, a high-waisted black pencil skirt</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#ff7b00"></span>
+          BlijeMark
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Character name: Orbit
+
+Prompt: A skinny upright anthropomorphic white sleek fur rabbit, features large expressive brown eyes, and two tall ears with soft pink inner linings that point upward. It is dressed in a vibrant red hooded jacket with thick white cuffs over a white undershirt paired with deep blue cargo trousers and a dark belt and a silver belt buckle. The rabbit wears red fingerless gloves that are showing his white fingers and sturdy red and grey boots that match the color scheme of its jacket. He has a white small rabbit tail on his back below the belt. He shows a little of his upper teeth</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#e51515"></span>
+          Bomba
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Midjourney prompt: Anime woman, Large pointed red fox ears with white inner fluff; large bushy red and black striped fox tail with white tip. Heterochromia: one bright green eye, one bright blue eye. Spiky shoulder length red hair with black streaks, white stripe down center of bangs, subtle blue highlights on tips. Black halter style crop top with three horizontal chest cut outs, integrated choker, silver studded bottom band. Long fingerless black elbow length gloves, black painted nails. Red plaid pleated mini skirt with black leather grommet belt. One leg: fishnet thigh high stocking; other leg: black and white horizontally striped thigh high socks, wears black boots
+
+
+Prompt character : Bomba, heterochromia, green eye, blue eye, multicolored hair, black streaked hair, black striped hair, red hair, fox ears, hair between eyes, fox tail, black hair, single white hair strand,
+
+Regular outfit : ladder crop top, black crop top, cleavage cutout, exposed shoulders, midriff, black elbow gloves, fingerless gloves, belt, red skirt, plaid skirt, mismatched thighhighs, single_fishnet thighhigh, striped thighhigh, black stripes, fishnet thighhigh, black boots
+
+Alt Outfit : jeans, fishnet_top, black_bridal_gauntlets, torn_jeans, belt, red_sneakers, black nails, sharp_fingernails, spiked_collar, black top, breasts_apart, exposed_shoulders, 
+
+Tail and hair : Good luck. (Sometimes striped tail, two-tone tail, or horizontal stripe pattern tail </div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#e81111"></span>
+          KinkyKong
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
@@ -2576,8 +2807,43 @@ prompt: sloth wearing a green hooded cloak with growing yellow magical mushrooms
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2ecc71"></span>
-          Piper
+          <span class="cm-swatch" style="background:#e605b5"></span>
+          Ancient Chaos
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Prompt: barefoot cat boy noir wearing a black hoodie and pants with neon pink and neon blue accents, blue eye, blond short hair</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#6600ff"></span>
+          Snoopytimelord
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Snoopie &amp; The Girl comics 
+https://discord.com/channels/1066330825844609034/1534997414174261419</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#1683e9"></span>
+          Xslayer
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
@@ -2593,12 +2859,12 @@ prompt: sloth wearing a green hooded cloak with growing yellow magical mushrooms
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2e87cc"></span>
-          Royo
+          <span class="cm-swatch" style="background:#612f00"></span>
+          PotatoPropagator
         </div>
         <div class="cm-col-role">
-          <div class="cm-role-title">The summoner</div>
-          <div class="cm-role-desc"></div>
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Captain Abetes</div>
         </div>
         <div class="cm-col-actions">
           <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
@@ -2610,63 +2876,100 @@ prompt: sloth wearing a green hooded cloak with growing yellow magical mushrooms
           <button class="btn95 cm-order-btn" title="Move down">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#24894e"></span>
-          Tardev
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">The hunter</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#a1a1a1"></span>
-          Nebevona &amp; Cezerona
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Elf twins</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#d68905"></span>
-          Rividis
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Goddess</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2e8fcc"></span>
-          Inaycke
+          <span class="cm-swatch" style="background:#d1d1d1"></span>
+          Revelee
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
           <div class="cm-role-desc"></div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#f5b400"></span>
+          Little Angry
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Angry cloud</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#5fbdf7"></span>
+          Katsumi
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Midjourney prompt: Katsumi is a blue hair with yellow streaks tied into a messy pony tail. Katsumi has yellow eyes with vertical slit pupils, and sharp shark teeth. Both of Katsumi's arms and hands are dark blue from her fingertips to her elbows with a gradual gradient to her tanned skin past her elbow. Katsumi has purple-painted fingernails, gills on her ribs and a shark tail. Katsumi has a tan face. Katsumi's outfit is a white cropped tshirt and cutoff jean shorts over a dark blue bikini. Katsumi is typically barefoot.</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#c20000"></span>
+          Oswen
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Character OC name: Inferno Astrum
+
+
+Midjourney prompt: Astrum is a female dragon queen with long brown hair, red eyes, pale skin, small red horns, pointed ears, large membranous red dragon wings, and a long red dragon tail. Astrum wears an elegant red dress with high leg slits and black corseted decorated with gold embroidery, hanging gold chains, gold trim, gold jewelry including a crown and necklace, and black high heels with crisscross gold straps.</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#af2ac0"></span>
+          MastaDon
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Mastradon Astrum</div>
+        </div>
+        <div class="cm-col-actions">
+          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
+          
+        </div>
+      </div><div class="cm-row">
+        <div class="cm-col-order">
+          <button class="btn95 cm-order-btn" title="Move up">▲</button>
+          <button class="btn95 cm-order-btn" title="Move down">▼</button>
+        </div>
+        <div class="cm-col-name">
+          <span class="cm-swatch" style="background:#24b6ff"></span>
+          Amethystea
+        </div>
+        <div class="cm-col-role">
+          <div class="cm-role-title"></div>
+          <div class="cm-role-desc">Oc name is Arthur</div>
         </div>
         <div class="cm-col-actions">
           <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
@@ -2679,541 +2982,10 @@ prompt: sloth wearing a green hooded cloak with growing yellow magical mushrooms
         </div>
         <div class="cm-col-name">
           <span class="cm-swatch" style="background:#000000"></span>
-          Taedd
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Taed Ne Marv</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2442d6"></span>
-          Jordee
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Cleric</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#e39c02"></span>
-          Orun
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">God</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2ecc71"></span>
-          Gnight Rider
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Hero</div>
-          <div class="cm-role-desc">The hero we need</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#f218ca"></span>
-          Mira
+          Mayhair
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2acaea"></span>
-          Festus
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Festus Vilmire</div>
-          <div class="cm-role-desc">modern clothing prompt: a male anime demon with white and teal spiky hair, light silver eyes. he has dark horns, pointed ears, and a slight smirk. he wears a light button up shirt, brown plaid pants with a black belt, and black studded bracelets on both wrists.</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#e20303"></span>
-          Blenk
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Blenk Winkletooth or Lurki</div>
-          <div class="cm-role-desc">Prompt: a small red troll wearing brown robe and gnome hat, and beige tunic under it. he has large tusks and wide mouth</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2ecc71"></span>
-          Brekky
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#f06000"></span>
-          Autumn
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc">Prompt: friendly anime witch with long brown hair and brown eyes, wearing a black witch hat and an orange jacket black shirt and black skirt with black pants and boots</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#d11515"></span>
-          The Crows
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#662400"></span>
-          Count Mountebank
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Mon Bahnk</div>
-          <div class="cm-role-desc">Prompt: Vane, an imposing aristocratic villain with a strong square jaw, high cheekbones, a long sharp nose, heavy brows, and long greased back black hair. He is clean-shaven with a charismatic, unsettling million-dollar smile. He is dressed in elegant black robes over a formal collared shirt and tie, with black trousers. He grips a ornate walking cane in one hand. Vane is powerful, sophisticated, and menacing with equal parts charismatic preacher and dark sorcerer.</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#40c2c4"></span>
-          Orby
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#980ed8"></span>
-          Lilac
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Lilac Vane</div>
-          <div class="cm-role-desc">Prompt: anime female witch, Lilac has pale skin, short wavy purple hair, and large purple eyes. Lilac is wearing a tall, pointed purple witch hat with a wide brim and a black band. Lilac's outfit consists of a long, open purple trench coat worn over a black button up shirt and black trousers, paired with chunky black shoes</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#ff0000"></span>
-          Wizlard
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Wizlard the Lizard Wizard</div>
-          <div class="cm-role-desc">Prompt: anthropomorphic orange wizard lizard with red lizard eyes and is wearing a wizard hat and black robe. </div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#0033ff"></span>
-          Croakius
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">The Toad Wizard</div>
-          <div class="cm-role-desc">Prompt: a small fat beige grey with a lighter belly color toad wearing dark blue ish wizard hat and has 4 pink fairy wings</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#ff0fb3"></span>
-          Cetea
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Daughter of important wizard</div>
-          <div class="cm-role-desc">Current prompt with silver metal armor: wizard woman with pink hair in a short bob and one braided hair on the side, bright blue eyes, wearing a silver metal wizard armor, silver metal wizard hat, she is wearing a feather boa over her outfit made of magical red and orange feathers, silver metal thigh-high boots. She holds a silver staff topped with a gigantic crystal in diamond shape</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2ecc71"></span>
-          Theo
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Theo Brightpaw</div>
-          <div class="cm-role-desc">prompt: anime illustration full body fluffy anthromorphic cat with short brown hair brown eyes glasses white paws and a medieval ranger suit</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#4654b9"></span>
-          Fukoro
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc">prompt: blue character covered in green leafs with 2 antlers</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#bb3e4b"></span>
-          Shirahn
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Shirahn Utsuri [Kokuyori Tribe]</div>
-          <div class="cm-role-desc">Experimental prompt: White skin woman with voluminous crimson-red hair, 2 jagged black horns on her head,pointed ears, purple eyes, she has a black gem on her forehead and 2 blue tiger stripes on each of her cheeks. She has one black horn on her right shoulder, her legs are blue tiger hybrid fur with dark blue tiger striped, legs ending in paw feet with black claws, matching blue tiger tail, normal hands with black claws,She wears a light sage-green off-the-shoulder wrap mini-kimono with wide sleeves and a wide black obi belt tied with a white cord
-
-animal version prompt: Blue and dark blue striped strong Felidae fantasy creature, the creature has antennae on its head</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#1bafee"></span>
-          Darahn
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Darahn Utsuri [Kokuyori Tribe]</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#4fa171"></span>
-          Ghost lady
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc">Prompt:  a transparent floating ghost lady with green dress and green hair, she has dark black antlers and wears a small crown</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#878787"></span>
-          Zarina
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Zarina of the Waning Moon</div>
-          <div class="cm-role-desc">Prompt: Athletic dark-skinned woman warrior, long black ponytail, amber eyes, white bandeau and flowing split skirt, silver bracers, wielding large crescent blade scythe weapon with chain and white sphere weight. Confident, determined expression. </div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#dd2235"></span>
-          Phaedra
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Phaedra Espoir</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#2eb8a8"></span>
-          Kyla
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Kyla of the Red Desert</div>
-          <div class="cm-role-desc">Prompt: an anthropomorphic ferret with white fur, deep red eyes, wearing a cyan hood over her head and beige robes, she has a skirt made of red feathers
-
-Alternative prompt:  an anthropomorphic female ferret with white fur and deep red eyes, she is wearing a colorful cyan top with hood over her head, simple brown desert parachute pants below a skirt made of many red feathers, a blue round saphire in the middle of her belt.</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#eebf17"></span>
-          Kaze
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Kaze of the Wishpering Dunes</div>
-          <div class="cm-role-desc">Prompt: an anthropomorphic brown male ferret with brown fur bandages covering his eyes, blind, yellow hood over its head, wide-sleeved black clothing with gold-patterned sash, baggy pants with white front panel, brown tail, bandages around his ankles</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#d41125"></span>
-          Grahan
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Grahan of the Midnight</div>
-          <div class="cm-role-desc">prompt:an anthropomorphic black male ferret with black fur and white line pattern in his face, white background, robe with a red hood and white cape, white pants, black tail, white patterns on his wrist, bandages around his ankles</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#e09006"></span>
-          Aridess
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc">Prompt: desert voyager, She has short spiky orange hair and amber eyes. She wears a structured white rounded cap with a wide, ornate golden border integrated with a flowing white desert cowl that drapes into a long cape with a split back. Her outfit features a burnt orange tunic with tone-on-tone layered under white robes with thick navy blue trim and a dark waist sash. She has a high collar with a gold ring brooch and green gem, baggy white pants, and brown leather boots.</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#08d496"></span>
-          Bird
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title"></div>
-          <div class="cm-role-desc">Prompt: an anthropomorphic male vulture with brown and tan feathers, sharp talons and large wings. he wears an white cloth wrapping around his head while it moves in the wind, wearing a blue gem with a chain hanging around his neck ,A dark wide belt wraps around the waist with long earthy brown cloth panel with white tribe stripes on it</div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#952ecc"></span>
-          Saskia
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Saskia Mibiri</div>
-          <div class="cm-role-desc">Prompt: A fantasy woman, a flowing navy cloak hangs behind her. She's wearing a dark outfit with black boots with metal accents. She has a glowing arcane prosthetic purple right eye and her left arm forged from light. Dark brown left eye. Her dark long hair is swept into a loose braid. </div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#d47216"></span>
-          Kraz
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Elder</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#027e35"></span>
-          K'Chaaz
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">the treacherous huntress</div>
-          <div class="cm-role-desc"></div>
-        </div>
-        <div class="cm-col-actions">
-          <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          
-        </div>
-      </div><div class="cm-row">
-        <div class="cm-col-order">
-          <button class="btn95 cm-order-btn" title="Move up">▲</button>
-          <button class="btn95 cm-order-btn" title="Move down">▼</button>
-        </div>
-        <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#9e2ead"></span>
-          Chaaz'rad
-        </div>
-        <div class="cm-col-role">
-          <div class="cm-role-title">Queen Chaaz'rad the Wizard's Bane</div>
           <div class="cm-role-desc"></div>
         </div>
         <div class="cm-col-actions">
@@ -3226,16 +2998,18 @@ Alternative prompt:  an anthropomorphic female ferret with white fur and deep re
           <button class="btn95 cm-order-btn" title="Move down" disabled="">▼</button>
         </div>
         <div class="cm-col-name">
-          <span class="cm-swatch" style="background:#356e4b"></span>
-          Vambrace
+          <span class="cm-swatch" style="background:#ff00ae"></span>
+          Ms.Unicorn
         </div>
         <div class="cm-col-role">
           <div class="cm-role-title"></div>
-          <div class="cm-role-desc"></div>
+          <div class="cm-role-desc">Character name: Princess Uni
+
+Prompt: Princess Uni is a unicorn. Prinses Uni has white glinting fur, pink shimmering mane and tail. She's wearing an ornate golden tiara with a glowing pink gemstone. She's also wearing pink heart shaped glasses.</div>
         </div>
         <div class="cm-col-actions">
           <button class="btn95 cm-action-btn cm-edit-btn">✏️ Edit</button>
-          <button class="btn95 cm-action-btn cm-del-btn">🗑 Del</button>
+          
         </div>
       </div></div>
     </div>
@@ -3971,7 +3745,7 @@ Alternative prompt:  an anthropomorphic female ferret with white fur and deep re
   <div id="startBtn" class="btn95" onclick="OS.toggleStart(event)"><span class="g">🪟</span>Start</div>
   <div id="taskDivider"></div>
   <div id="taskItems"></div>
-  <div id="clock">11:17 PM</div>
+  <div id="clock">4:57 PM</div>
 </div>
 
 <div id="startMenu" class="hidden raised">
@@ -4828,6 +4602,523 @@ const SrefApp = (function(){
 
   return {switchTab, copy, buildWeights, dynamicGenerate, closeLightbox, randomCombined, updateSourceToggles, refreshToggles, loadRemoteData, toggleFileMenu};
 })();
+
+
+
+/* =====================================================
+   CreatureCodex — Creature wiki / field guide
+===================================================== */
+const CreatureCodex = (function(){
+  let creatures = [
+  {
+    "id": "cr1791643956039mxvu2",
+    "dateAdded": "2026-10-10",
+    "name": "X",
+    "type": "Animal",
+    "world": "SpellBroke",
+    "location": "Enchanted Forest",
+    "imageUrl": "https://s.mj.run/u8fSrl80wKE",
+    "danger": 3,
+    "rarity": 4,
+    "dietType": "Carnivore",
+    "concept": "A large feline-like creature native to the Enchanted Forest. Its long, flowing fur helps it blend into the pale vegetation and mist of its habitat, while the blue markings across its body provide natural camouflage among the forest's magical flora. The long antenna-like feelers are highly sensitive to changes in its surroundings, allowing it to detect movement and disturbances from a distance. Despite its imposing appearance, it is generally a calm and solitary creature, becoming aggressive only when threatened or when protecting its territory.",
+    "appearance": "It has the large, muscular body of a tiger, with broad shoulders, powerful legs, sharp claws, and a long tail. White and blue fur with Deep blue markings across it body. Two long flexible feelers extend from the sides of its head",
+    "behaviour": "They solitary creatures and usually travel alone. They establish large territories within forest and rarely tolerate another adult X entering their territory.\n\nThey are patient hunters, that are great tree climbers and use the high canopy or camouflage of the leafs to hunt or travel around the forest. Rather than immediately chasing prey, it will usually stalk it quietly until it finds the right opportunity to attack.\n\nThey are naturally cautious around unfamiliar creatures and will generally retreat if they do not feel threatened.\n\nHowever, when cornered or when protecting their territory, They can become extremely dangerous. Their strength, speed, and powerful claws make them formidable predators. \n",
+    "habitat": "live deep within the Enchanted Forest. They prefer regions containing large trees, dense undergrowth, mist-covered streams, and hidden clearings. Its territory can be quite large.",
+    "diet": "They primarily hunt large or medium size animals, but they are opportunistic hunters and will occasionally eat fish or smaller animals when larger prey is unavailable.",
+    "extra": "Some tribes in the forest honor this creature and have many tales about it.",
+    "galleryUrls": [
+      "https://s.mj.run/L9YSdeKclsc",
+      "https://s.mj.run/VkJPIX2IxPg",
+      "https://s.mj.run/u8fSrl80wKE",
+      "https://s.mj.run/Hi7i7RCdyp0"
+    ],
+    "imageZoom": 350,
+    "imagePosX": 20.96774193548387,
+    "imagePosY": 34.48275862068965
+  },
+  {
+    "id": "cr17916440922027qk9b",
+    "dateAdded": "2026-10-10",
+    "name": "need name",
+    "type": "Animal",
+    "world": "SpellBroke",
+    "location": "Enchanted Forest",
+    "imageUrl": "https://s.mj.run/GBDLXzZGqt0",
+    "danger": 1,
+    "rarity": 1,
+    "dietType": "Omnivore",
+    "concept": "The animal is a strange moth-and-Felidae-like creature found throughout the deeper parts of the Enchanted Forest. It has the body, ears, paws, and curious nature of a small wild cat, combined with enormous colourful moth wings and long sensitive feelers.\n\nAlthough it primarily searches for small insects and other tiny creatures, It is an omnivore and also feeds on various fruits, flowers, leaves, and other plants.\n",
+    "appearance": "It has has a slender and tiny feline body covered in dark fur with slight dark red or purple glare in the sun, pointed ears, glowing blue eyes, and two long, curling feelers extending from the top of its head.\n\nIts enormous moth-like wings are its most distinctive feature. They are primarily orange and reddish-orange with darker violet at the center, with darker edges and scattered blue-green markings across their surface.\n\nThe wings are much larger than its body and allow it to fly surprisingly gracefully between the trees.\n\nIts paws have small retractable claws, useful for climbing trees and catching small insects. Its long tail helps it balance while climbing and moving through the forest canopy. \n",
+    "behaviour": "They are curious, playful, and generally peaceful creatures.\n\nThey spend much of their time exploring their surroundings, climbing trees, fluttering between branches, and searching through fallen leaves for food.\n\nThey are particularly active around dusk and at night.\n\nWhen they encounter another fellow x they will often playfully chase one another through the trees. They are not strongly territorial and several individuals may live within the same area.\n\nIf frightened, it will usually flee rather than fight. It may spread its large wings to make itself look bigger before quickly flying into the trees.",
+    "habitat": "",
+    "diet": "Although it primarily searches for small insects and other tiny creatures, It is an omnivore and also feeds on various fruits, flowers, leaves, and other plants.\n\nIts favourite snack, however, is the mischievous Splinter Sprites  ⁠unknown. But they are hard to catch! ",
+    "extra": "They have a surprisingly good sense of smell and can detect insects hiding beneath leaves or inside rotten wood.\n\nTheir long feelers are also highly sensitive and help them detect tiny movements nearby. When searching for food, they will often stop completely still and gently move their feelers through the air before suddenly pouncing on an insect.\n\nTheir relationship with Splinter Sprites is somewhat amusing. Splinter Sprites are naturally mischievous and will sometimes deliberately throw small things or poke them before running away. The x will usually chase after them, turning the encounter into something resembling a game.\n\nBecause of this, some forest inhabitants believe that x don't just eat Splinter Sprites they actually enjoy playing with them first. \n",
+    "galleryUrls": [
+      "https://s.mj.run/GBDLXzZGqt0"
+    ],
+    "imageZoom": 180,
+    "imagePosX": 80.3225806451613,
+    "imagePosY": 16.666666666666664
+  },
+  {
+    "id": "cr1791644217181bigbx",
+    "dateAdded": "2026-10-10",
+    "name": "Need name",
+    "type": "Animal",
+    "world": "SpellBroke",
+    "location": "Chroma Caverns",
+    "imageUrl": "https://s.mj.run/8LwIO3Ueo9Y",
+    "danger": 1,
+    "rarity": 1,
+    "dietType": "Special",
+    "concept": "A  cavern-dwelling slug that participates in the formation and shaping of crystals. It collects microscopic crystalline dust suspended in the cavern air using a specialized organic structure growing from its back. The collected material is processed inside its body and eventually transformed into a crystalline mucus, which it deposits as it moves. This slowly alters and reshapes the natural crystal formations around it.",
+    "appearance": "A slug-like creature with pale pink skin. Along its back grows a dense structure of  translucent  branching appendages.\n\nThe branching structures are covered with countless microscopic hairs that gently vibrate and attract crystalline dust from the surrounding air.\n\nTwo long pale-pink antennae extend from its head and are specialized for sensing sound waves and vibrations.\n\nAlong its flanks are translucent organic pouches filled with colorful liquid, containing processed crystalline material.",
+    "behaviour": "Generally peaceful and non-aggressive. It tends to remain still for long periods while extending its dorsal crystalline structures to collect dust. It becomes more active when moving between crystal formations or searching for suitable surfaces to reshape.\n\nIt is sensitive to vibrations and appears to prefer areas where the surrounding crystals produce resonances compatible with its biology.",
+    "habitat": "Deep crystalline caverns and vertical crystal formations, narrow passages and large chambers, particularly areas with abundant suspended crystalline dust.",
+    "diet": "It absorbs microscopic crystalline dust suspended in the air and processes it internally.",
+    "extra": "The creature secretes a crystalline mucus from the underside of its body. As it moves across crystal formations, this mucus is deposited onto their surfaces and gradually hardens into new crystal.\n\nOver long periods, entire sections of the cavern may be subtly reshaped by generations of these creatures.\n\nThe creature may not actually create crystal from nothing. It could instead act as a biological catalyst, concentrating and reorganizing crystalline material already present in the environment.\n\nDifferent crystalline compositions may produce different types of mucus and different resulting crystal structures.\n\nIts relationship with resonance is potentially significant: the creature may deliberately reshape crystals because smoother or differently structured surfaces produce vibrations that are more suitable for its senses or physiology.",
+    "galleryUrls": [
+      "https://s.mj.run/8LwIO3Ueo9Y"
+    ],
+    "imageZoom": 125,
+    "imagePosX": 90.64516129032258,
+    "imagePosY": 67.24137931034483
+  }
+];
+  let currentCreatureId = null;
+  let editingId = null;
+  let quickFilters = [];
+  // what changed since the last full-HTML export — written into the Notes app on export, same as the Character Portal
+  let changeLog = { added: [], edited: [], deleted: [] };
+  const defaultWorld = 'SpellBroke';
+  const defaultLocations = ['Phantasma','Emberborn','Enchanted Forest','Chroma Caverns','Tan sea'];
+  let cropZoom = 100, cropPosX = 50, cropPosY = 50;
+  let cropDragging = false, dragStartX = 0, dragStartY = 0, dragStartPosX = 50, dragStartPosY = 50;
+
+  const dangerNames = ['','Harmless','Low Risk','Dangerous','Highly Dangerous','Extreme Threat'];
+  const rarityNames = ['','Common','Uncommon','Rare','Very Rare','Legendary'];
+  const dietTypes = ['Herbivore','Carnivore','Omnivore','Special'];
+  
+  const typeDefaults = ['Beast','Monster','Spirit','Undead','Elemental','Construct','Plant','Aberration','Divine','Unknown'];
+
+  function esc(v){
+    return String(v == null ? '' : v).replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+  }
+  function clamp(v,min,max){ return Math.min(max,Math.max(min,v)); }
+  function id(){ return 'cr' + Date.now() + Math.random().toString(36).slice(2,7); }
+  function worlds(){
+    const set = new Set();
+    try{
+      if(window.CharPortal && typeof CharPortal.getWorlds === 'function') CharPortal.getWorlds().forEach(w=>set.add(w));
+    }catch(e){}
+    creatures.forEach(c=>{ if(c.world) set.add(c.world); });
+    return [...set];
+  }
+  /* Creature images intentionally use the same background-image approach as
+     the Character Portal.  Character Portal stores the URL in avatarUrl and
+     renders it as url('...'), with background-size in percent and the saved
+     X/Y crop positions.  Keep the exact same pattern here so saved creature
+     images behave identically to saved character images. */
+  function imageStyle(c, extra){
+    const url = c && c.imageUrl ? String(c.imageUrl).trim() : '';
+    if(!url) return (extra||'') + 'background-image:none;background-size:100%;background-position:50% 50%;background-repeat:no-repeat;';
+    const safeUrl = url.replace(/'/g, "\\'").replace(/\n|\r/g, '');
+    const zoom = Number(c.imageZoom || 100);
+    const posX = Number(c.imagePosX == null ? 50 : c.imagePosX);
+    const posY = Number(c.imagePosY == null ? 50 : c.imagePosY);
+    return (extra||'') + `background-image:url('${safeUrl}');background-size:${zoom}%;background-position:${posX}% ${posY}%;background-repeat:no-repeat;`;
+  }
+  function stars(n){ return '★★★★★'.slice(0,Math.max(0,Math.min(5,Number(n)||0))); }
+  function skulls(n){ return '☠'.repeat(Math.max(0,Math.min(5,Number(n)||0))); }
+  function selectedWorld(){ return document.getElementById('cc-worldFilter')?.value || defaultWorld; }
+  function filtered(){
+    const q=(document.getElementById('cc-search')?.value||'').trim().toLowerCase();
+    const world=selectedWorld();
+    const location=document.getElementById('cc-locationFilter')?.value||'';
+    return creatures.filter(c=>{
+      if(world && c.world!==world) return false;
+      if(location && c.location!==location) return false;
+      /* Multi-select behaviour: buttons within the same filter group are
+         alternatives (e.g. Rare OR Legendary), while different groups are
+         combined (e.g. Rare AND Herbivore). */
+      const grouped = { danger:[], rarity:[], diet:[] };
+      quickFilters.forEach(f=>{
+        const split = f.indexOf(':');
+        if(split<0) return;
+        const kind=f.slice(0,split), val=f.slice(split+1);
+        if(grouped[kind]) grouped[kind].push(val);
+      });
+      if(grouped.danger.length && !grouped.danger.includes(String(Number(c.danger)))) return false;
+      if(grouped.rarity.length && !grouped.rarity.includes(String(Number(c.rarity)))) return false;
+      if(grouped.diet.length && !grouped.diet.includes(String(c.dietType||''))) return false;
+      if(q){
+        const hay=[c.name,c.type,c.world,c.location,c.dietType,c.concept,c.appearance,c.behaviour,c.habitat,c.diet,c.extra].join(' ').toLowerCase();
+        if(!hay.includes(q)) return false;
+      }
+      return true;
+    });
+  }
+  function galleryUrls(c){
+    const raw=Array.isArray(c?.galleryUrls)?c.galleryUrls:(Array.isArray(c?.gallery)?c.gallery:[]);
+    const urls=raw.map(v=>String(v||'').trim()).filter(Boolean);
+    return urls.length?urls:(c?.imageUrl?[String(c.imageUrl).trim()]:[]);
+  }
+  function openCreatureGalleryImage(url,title){
+    const overlay=document.getElementById('srefLightbox'), body=document.getElementById('lbBody');
+    if(!overlay||!body)return;
+    document.getElementById('lbTitle').textContent=title||'Creature Image'; body.innerHTML='';
+    const spinner=document.createElement('div'); spinner.className='sref-spinner'; body.appendChild(spinner);
+    const img=new Image(); img.decoding='async'; img.referrerPolicy='no-referrer'; img.alt=title||'Creature image';
+    img.onload=()=>{spinner.remove();body.appendChild(img);};
+    img.onerror=()=>{spinner.remove();body.innerHTML='<div class="lb-error">IMAGE COULD NOT BE LOADED</div>';};
+    img.src=url; overlay.classList.add('show');
+  }
+  function changeGallery(delta){
+    const c=creatures.find(x=>x.id===currentCreatureId); if(!c)return;
+    const urls=galleryUrls(c); if(urls.length<2)return;
+    c._galleryIndex=((Number(c._galleryIndex)||0)+delta+urls.length)%urls.length; renderDetail(c);
+  }
+  function populateFilters(){
+    const wf=document.getElementById('cc-worldFilter'), lf=document.getElementById('cc-locationFilter'), sidebar=document.getElementById('cc-sidebarFilters');
+    const worldsPresent=[...new Set(creatures.map(c=>c.world).filter(Boolean))];
+    if(!worldsPresent.includes(defaultWorld)) worldsPresent.unshift(defaultWorld);
+    const oldW=wf?.value || defaultWorld, oldL=lf?.value || '';
+    if(wf){ wf.innerHTML=worldsPresent.map(w=>`<option value="${esc(w)}">🌎 ${esc(w)}</option>`).join(''); wf.value=worldsPresent.includes(oldW)?oldW:defaultWorld; }
+    const activeWorld=wf?.value||defaultWorld;
+    const locList=[...new Set(creatures.filter(c=>c.world===activeWorld).map(c=>c.location).filter(Boolean))].sort();
+    if(lf){ lf.innerHTML='<option value="">All Locations</option>'+locList.map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join(''); if(locList.includes(oldL)) lf.value=oldL; }
+    if(sidebar){
+      const presentDanger=[...new Set(creatures.filter(c=>c.world===activeWorld).map(c=>Number(c.danger)).filter(n=>n>0))].sort((a,b)=>b-a);
+      const presentRarity=[...new Set(creatures.filter(c=>c.world===activeWorld).map(c=>Number(c.rarity)).filter(n=>n>0))].sort((a,b)=>b-a);
+      const presentDiet=[...new Set(creatures.filter(c=>c.world===activeWorld).map(c=>c.dietType).filter(Boolean))];
+      const section=(title,buttons)=>buttons.length?`<div class="cc-sidebar-title">${title}</div>${buttons.join('')}`:'';
+      sidebar.innerHTML=section('DANGER',presentDanger.map(n=>`<button class="btn95 cc-side-btn" data-filter="danger:${n}" onclick="CreatureCodex.toggleQuickFilter(this,'danger:${n}')">☠ ${esc(dangerNames[n]||'')}</button>`))
+        +section('RARITY',presentRarity.map(n=>`<button class="btn95 cc-side-btn" data-filter="rarity:${n}" onclick="CreatureCodex.toggleQuickFilter(this,'rarity:${n}')">${stars(n)} ${esc(rarityNames[n]||'')}</button>`))
+        +section('DIET',presentDiet.map(d=>`<button class="btn95 cc-side-btn" data-filter="diet:${esc(d)}" onclick="CreatureCodex.toggleQuickFilter(this,'diet:${esc(d)}')">${d==='Herbivore'?'🌿':d==='Carnivore'?'🍖':d==='Omnivore'?'🌿🍖':'✨'} ${esc(d)}</button>`));
+      updateSideButtons();
+    }
+  }
+  function render(){
+    populateFilters();
+    const list=document.getElementById('cc-list'), detail=document.getElementById('cc-detail');
+    if(!list) return;
+    if(currentCreatureId){
+      const c=creatures.find(x=>x.id===currentCreatureId);
+      if(c){ renderDetail(c); return; }
+      currentCreatureId=null;
+    }
+    detail.style.display='none'; list.style.display='grid';
+    const rows=filtered();
+    list.innerHTML=rows.length ? rows.map(c=>`
+      <div class="cc-card" onclick="CreatureCodex.openCreature('${esc(c.id)}')">
+        <div class="cc-card-image"><div class="cc-image" style="${imageStyle(c)}"></div></div>
+        <div class="cc-card-name">${esc(c.name)}</div>
+        <div class="cc-card-sub">${esc(c.type||'Unknown')}${c.location?' · '+esc(c.location):''}</div>
+        <div class="cc-card-ratings"><span class="cc-danger">${skulls(c.danger)} ${esc(dangerNames[c.danger]||'')}</span><br><span class="cc-rarity">${stars(c.rarity)} ${esc(rarityNames[c.rarity]||'')}</span></div>
+      </div>`).join('') : '<div class="cc-empty">No creatures match the current filters.<br><br>Open <b>Creature Manager</b> to add one.</div>';
+  }
+  function renderDetail(c){
+    const list=document.getElementById('cc-list'), detail=document.getElementById('cc-detail');
+    list.style.display='none'; detail.style.display='flex';
+    const urls=galleryUrls(c), idx=urls.length?((Number(c._galleryIndex)||0)%urls.length):0, currentUrl=urls[idx]||'';
+    detail.innerHTML=`
+      <button class="btn95 cc-back" onclick="CreatureCodex.closeCreature()">◀ Back to Creature List</button>
+      <div class="cc-detail-top">
+        <div>
+          <div class="cc-detail-gallery" onclick="CreatureCodex.openGalleryImage('${esc(currentUrl)}')">
+            ${currentUrl?`<img src="${esc(currentUrl)}" alt="${esc(c.name)}" referrerpolicy="no-referrer">`:'<div class="cc-gallery-empty">No gallery image added.</div>'}
+            ${urls.length>1?`<button class="cc-gallery-arrow left" onclick="event.stopPropagation();CreatureCodex.changeGallery(-1)" aria-label="Previous image">‹</button><button class="cc-gallery-arrow right" onclick="event.stopPropagation();CreatureCodex.changeGallery(1)" aria-label="Next image">›</button><div class="cc-gallery-count">${idx+1} / ${urls.length}</div>`:''}
+          </div>
+          <div class="cc-detail-meta"><span class="cc-danger">${skulls(c.danger)} ${esc(dangerNames[c.danger]||'Unclassified')}</span><span class="cc-rarity">${stars(c.rarity)} ${esc(rarityNames[c.rarity]||'Unclassified')}</span></div>
+        </div>
+        <div class="cc-detail-heading"><h1>${esc(c.name)}</h1><div class="cc-type">${esc(c.type||'Unknown')}${c.location?' · '+esc(c.location):''}</div><div class="cc-statbox"><div class="cc-statlabel">Diet</div><div class="cc-statvalue">${esc(c.dietType||'Unclassified')}</div></div></div>
+      </div>
+      <div class="cc-detail-body">
+        ${c.concept&&String(c.concept).trim()?`<div class="cc-note"><div class="cc-note-title">💡 Concept</div><div class="cc-note-text">${esc(c.concept)}</div></div>`:''}
+        ${c.appearance&&String(c.appearance).trim()?`<div class="cc-note"><div class="cc-note-title">👁️ Appearance</div><div class="cc-note-text">${esc(c.appearance)}</div></div>`:''}
+        ${c.behaviour&&String(c.behaviour).trim()?`<div class="cc-note"><div class="cc-note-title">🧠 Behaviour</div><div class="cc-note-text">${esc(c.behaviour)}</div></div>`:''}
+        ${c.habitat&&String(c.habitat).trim()?`<div class="cc-note"><div class="cc-note-title">🌲 Habitat</div><div class="cc-note-text">${esc(c.habitat)}</div></div>`:''}
+        ${c.diet&&String(c.diet).trim()?`<div class="cc-note"><div class="cc-note-title">🍖 Diet</div><div class="cc-note-text">${esc(c.diet)}</div></div>`:''}
+        ${c.extra&&String(c.extra).trim()?`<div class="cc-note"><div class="cc-note-title">✨ Extra</div><div class="cc-note-text">${esc(c.extra)}</div></div>`:''}
+      </div>`;
+  }
+  function openCreature(id){ currentCreatureId=id; render(); }
+  function closeCreature(){ currentCreatureId=null; render(); }
+  function clearFilters(){ quickFilters=[]; const s=document.getElementById('cc-search'); if(s)s.value=''; const l=document.getElementById('cc-locationFilter'); if(l)l.value=''; const w=document.getElementById('cc-worldFilter'); if(w)w.value=defaultWorld; render(); }
+  function setWorld(v){ quickFilters=[]; const w=document.getElementById('cc-worldFilter'); if(w && v) w.value=v; render(); }
+  function setQuickFilter(v){ quickFilters=v?[v]:[]; updateSideButtons(); render(); }
+  function toggleQuickFilter(btn,v){ const i=quickFilters.indexOf(v); if(i>=0) quickFilters.splice(i,1); else quickFilters.push(v); updateSideButtons(); render(); }
+  function updateSideButtons(){ document.querySelectorAll('#win-creaturecodex .cc-side-btn').forEach(b=>b.classList.toggle('active',quickFilters.includes(b.dataset.filter))); }
+  function openManager(){ OS.open('creaturemanager'); renderManager(); }
+  function renderManager(){
+    const body=document.getElementById('cc-managerBody'), count=document.getElementById('cc-managerCount');
+    if(!body) return;
+    if(count) count.textContent=`${creatures.length} Creature${creatures.length===1?'':'s'}`;
+    body.innerHTML=creatures.length ? creatures.map((c,i)=>`<div class="cm-row">
+      <div><div class="cc-mini-img" style="${imageStyle(c)}"></div></div>
+      <div><b>${esc(c.name)}</b><div class="cc-world-note">${esc(c.type||'Unknown')}</div></div>
+      <div><span class="cc-danger">${skulls(c.danger)}</span><div class="cc-world-note">${esc(dangerNames[c.danger]||'')}</div></div>
+      <div><span class="cc-rarity">${stars(c.rarity)}</span><div class="cc-world-note">${esc(rarityNames[c.rarity]||'')}</div></div>
+      <div>${esc(c.world||'—')}</div>
+      <div>${esc(c.location||'—')}</div>
+      <div class="cc-manager-actions"><button class="btn95" onclick="CreatureCodex.edit('${esc(c.id)}')">✏️ Edit</button><button class="btn95" onclick="CreatureCodex.remove('${esc(c.id)}')">🗑 Delete</button></div>
+    </div>`).join('') : '<div class="cc-empty">No creatures yet. Click <b>➕ Add Creature</b> to create your first field entry.</div>';
+  }
+  function resetEditor(c){
+    const ids=['cc-inputName','cc-inputType','cc-inputWorld','cc-inputLocation','cc-inputImage','cc-inputGallery','cc-inputConcept','cc-inputAppearance','cc-inputBehaviour','cc-inputHabitat','cc-inputDiet','cc-inputExtra'];
+    ids.forEach(x=>{const e=document.getElementById(x);if(e)e.value='';});
+    document.getElementById('cc-inputDanger').value='1'; document.getElementById('cc-inputRarity').value='1'; document.getElementById('cc-inputDietType').value='Herbivore';
+    ['type','world','location'].forEach(k=>{const cap=k.charAt(0).toUpperCase()+k.slice(1),e=document.getElementById('cc-input'+cap+'New');if(e)e.value='';});
+    document.getElementById('cc-editorError').textContent='';
+    if(c){
+      document.getElementById('cc-inputName').value=c.name||''; document.getElementById('cc-inputType').value=c.type||''; document.getElementById('cc-inputWorld').value=c.world||defaultWorld; document.getElementById('cc-inputLocation').value=c.location||''; document.getElementById('cc-inputImage').value=c.imageUrl||''; document.getElementById('cc-inputGallery').value=(Array.isArray(c.galleryUrls)?c.galleryUrls:[]).join('\n');
+      document.getElementById('cc-inputDanger').value=String(c.danger||1); document.getElementById('cc-inputRarity').value=String(c.rarity||1); document.getElementById('cc-inputDietType').value=c.dietType||'Herbivore';
+      document.getElementById('cc-inputConcept').value=c.concept||''; document.getElementById('cc-inputAppearance').value=c.appearance||''; document.getElementById('cc-inputBehaviour').value=c.behaviour||''; document.getElementById('cc-inputHabitat').value=c.habitat||''; document.getElementById('cc-inputDiet').value=c.diet||''; document.getElementById('cc-inputExtra').value=c.extra||'';
+      cropZoom=Number(c.imageZoom||100); cropPosX=Number(c.imagePosX==null?50:c.imagePosX); cropPosY=Number(c.imagePosY==null?50:c.imagePosY);
+    } else { cropZoom=100; cropPosX=50; cropPosY=50; }
+    populateEditorLists();
+    if(!c){ document.getElementById('cc-inputType').value=typeDefaults[0]||'Unknown'; document.getElementById('cc-inputWorld').value=defaultWorld; document.getElementById('cc-inputLocation').value=''; }
+    ['type','world','location'].forEach(k=>toggleNewChoice(k));
+    updateEditorPreview();
+    document.getElementById('cc-editorIcon').textContent=c?'✏️':'➕'; document.getElementById('cc-editorTitle').textContent=c?'Edit Creature':'Add Creature';
+    populateEditorLists();
+  }
+  function choiceValues(kind){
+    if(kind==='world') return [defaultWorld,...worlds(),...creatures.map(c=>c.world).filter(Boolean)];
+    if(kind==='type') return [...typeDefaults,...creatures.map(c=>c.type).filter(Boolean)];
+    return [...defaultLocations,...creatures.map(c=>c.location).filter(Boolean)];
+  }
+  function populateChoice(id,values,current){
+    const el=document.getElementById(id); if(!el)return;
+    const vals=[...new Set(values.map(v=>String(v||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+    if(current && current!=='__NEW__' && !vals.includes(current)) vals.push(current);
+    el.innerHTML='<option value="__NEW__">➕ Add new...</option>'+vals.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');
+    el.value=current||vals[0]||'__NEW__';
+  }
+  function populateEditorLists(){
+    const type=document.getElementById('cc-inputType'), world=document.getElementById('cc-inputWorld'), location=document.getElementById('cc-inputLocation');
+    populateChoice('cc-inputType',choiceValues('type'),type?.value||'');
+    populateChoice('cc-inputWorld',choiceValues('world'),world?.value||defaultWorld);
+    populateChoice('cc-inputLocation',choiceValues('location'),location?.value||'');
+  }
+  function toggleNewChoice(kind){
+    const cap=kind.charAt(0).toUpperCase()+kind.slice(1), sel=document.getElementById('cc-input'+cap), input=document.getElementById('cc-input'+cap+'New');
+    if(!sel||!input)return;
+    const isNew=sel.value==='__NEW__';
+    input.style.display=isNew?'block':'none';
+    if(!isNew) input.value='';
+    if(isNew) input.focus();
+  }
+  function getChoiceValue(kind,fallback){
+    const cap=kind.charAt(0).toUpperCase()+kind.slice(1), sel=document.getElementById('cc-input'+cap), input=document.getElementById('cc-input'+cap+'New');
+    if(sel?.value==='__NEW__') return (input?.value||'').trim()||fallback;
+    return (sel?.value||'').trim()||fallback;
+  }
+  function openEditor(id){
+    editingId=id||null; const c=id?creatures.find(x=>x.id===id):null; resetEditor(c);
+    document.getElementById('cc-editorOverlay').classList.add('show');
+    centerEditor(document.getElementById('win-creatureeditor'));
+  }
+  function centerEditor(el){ el.classList.remove('hidden'); el.style.transform='none'; const w=Math.min(el.offsetWidth,window.innerWidth-16),h=Math.min(el.offsetHeight,window.innerHeight-16); el.style.width=w+'px'; el.style.maxHeight=(window.innerHeight-16)+'px'; el.style.left=Math.max(8,(window.innerWidth-w)/2)+'px'; el.style.top=Math.max(8,(window.innerHeight-h)/2)+'px'; }
+  function closeEditor(){ document.getElementById('cc-editorOverlay').classList.remove('show'); editingId=null; }
+  function save(){
+    const name=document.getElementById('cc-inputName').value.trim();
+    if(!name){document.getElementById('cc-editorError').textContent='Creature name is required.';return;}
+    const fields={name,type:getChoiceValue('type','Unknown'),world:getChoiceValue('world',defaultWorld),location:getChoiceValue('location',''),imageUrl:document.getElementById('cc-inputImage').value.trim(),danger:Number(document.getElementById('cc-inputDanger').value)||1,rarity:Number(document.getElementById('cc-inputRarity').value)||1,dietType:document.getElementById('cc-inputDietType').value||'Herbivore',concept:document.getElementById('cc-inputConcept').value,appearance:document.getElementById('cc-inputAppearance').value,behaviour:document.getElementById('cc-inputBehaviour').value,habitat:document.getElementById('cc-inputHabitat').value,diet:document.getElementById('cc-inputDiet').value,extra:document.getElementById('cc-inputExtra').value,galleryUrls:document.getElementById('cc-inputGallery').value.split(/\s+/).map(v=>v.trim()).filter(Boolean),imageZoom:cropZoom,imagePosX:cropPosX,imagePosY:cropPosY};
+    if(editingId){const c=creatures.find(x=>x.id===editingId);if(c){Object.assign(c,fields);changeLog.edited.push(name);}} else {creatures.push(Object.assign({id:id(),dateAdded:new Date().toISOString().slice(0,10)},fields));changeLog.added.push(name);}
+    closeEditor(); renderManager(); render();
+  }
+  function edit(id){ openEditor(id); }
+
+  /* ---------- Creature Re-Organizer ----------
+     Works like the Character Roster Re-Organizer: reorder a working copy
+     by dragging rows or with the arrow buttons, then "Save & Apply Order"
+     writes that order back. The order is what the Creature Manager and
+     the Codex card list both show, and it is saved by the full HTML export. */
+  let roItems = [];      // working copy of the creatures, in display order, while the Re-Organizer is open
+  let roOriginal = [];   // snapshot of roItems at open-time, for "Reset Order"
+  let roDragId = null;   // id of the row currently being dragged
+  function openReorganizer(){
+    roItems=creatures.slice(); roOriginal=roItems.slice(); roDragId=null;
+    const f=document.getElementById('cc-ro-filter'); if(f) f.value='';
+    OS.open('creaturereorganizer');
+    renderReorganizerList();
+  }
+  function closeReorganizer(){
+    OS.close('creaturereorganizer');
+    roItems=[]; roOriginal=[]; roDragId=null;
+  }
+  function renderReorganizerList(){
+    const list=document.getElementById('cc-ro-list');
+    if(!list) return;
+    const filterText=(document.getElementById('cc-ro-filter')?.value||'').toLowerCase().trim();
+    list.innerHTML='';
+    if(!roItems.length){
+      list.innerHTML='<div class="ro-empty">No creatures yet.</div>';
+      return;
+    }
+    let anyVisible=false;
+    roItems.forEach((c,i)=>{
+      const sub=[c.type||'Unknown',c.world,c.location].filter(Boolean).join(' · ');
+      const haystack=`${c.name} ${sub}`.toLowerCase();
+      if(filterText && !haystack.includes(filterText)) return;
+      anyVisible=true;
+      const row=document.createElement('div');
+      row.className='ro-row';
+      row.draggable=true;
+      row.dataset.id=c.id;
+      row.innerHTML=`
+        <span class="ro-handle">⠿</span>
+        <span class="ro-order-num">#${i+1}</span>
+        <span class="cc-ro-thumb" style="${imageStyle(c)}"></span>
+        <span class="ro-name" title="${esc(c.name)}">${esc(c.name)}</span>
+        <span class="ro-role">${esc(sub)}</span>
+        <span class="ro-order-btns">
+          <button class="btn95" title="Move to top">⬆Top</button>
+          <button class="btn95" title="Move up">▲</button>
+          <button class="btn95" title="Move down">▼</button>
+          <button class="btn95" title="Move to bottom">⬇Bot</button>
+        </span>
+      `;
+      const btns=row.querySelectorAll('.ro-order-btns button');
+      btns[0].onclick=()=>moveReorganizerRow(c.id,'top');
+      btns[1].onclick=()=>moveReorganizerRow(c.id,'up');
+      btns[2].onclick=()=>moveReorganizerRow(c.id,'down');
+      btns[3].onclick=()=>moveReorganizerRow(c.id,'bottom');
+      row.addEventListener('dragstart',e=>{ roDragId=c.id; row.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
+      row.addEventListener('dragend',()=>{ row.classList.remove('dragging'); list.querySelectorAll('.ro-row').forEach(r=>r.classList.remove('drag-over')); });
+      row.addEventListener('dragover',e=>{ e.preventDefault(); if(roDragId!==null && roDragId!==c.id) row.classList.add('drag-over'); });
+      row.addEventListener('dragleave',()=>row.classList.remove('drag-over'));
+      row.addEventListener('drop',e=>{
+        e.preventDefault();
+        row.classList.remove('drag-over');
+        if(roDragId===null || roDragId===c.id) return;
+        const fromIdx=roItems.findIndex(x=>x.id===roDragId), toIdx=roItems.findIndex(x=>x.id===c.id);
+        if(fromIdx===-1 || toIdx===-1) return;
+        const [moved]=roItems.splice(fromIdx,1);
+        roItems.splice(toIdx,0,moved);
+        roDragId=null;
+        renderReorganizerList();
+      });
+      list.appendChild(row);
+    });
+    if(!anyVisible) list.innerHTML='<div class="ro-empty">No creatures match that search.</div>';
+  }
+  function moveReorganizerRow(id,direction){
+    const idx=roItems.findIndex(c=>c.id===id);
+    if(idx===-1) return;
+    let target;
+    if(direction==='up') target=idx-1;
+    else if(direction==='down') target=idx+1;
+    else if(direction==='top') target=0;
+    else if(direction==='bottom') target=roItems.length-1;
+    if(target<0 || target>=roItems.length || target===idx) return;
+    const [moved]=roItems.splice(idx,1);
+    roItems.splice(target,0,moved);
+    renderReorganizerList();
+  }
+  function sortReorganizer(direction){
+    roItems.sort((a,b)=>{ const cmp=String(a.name||'').localeCompare(String(b.name||''),undefined,{sensitivity:'base'}); return direction==='za' ? -cmp : cmp; });
+    renderReorganizerList();
+  }
+  function resetReorganizerOrder(){ roItems=roOriginal.slice(); renderReorganizerList(); }
+  function saveReorganizerOrder(){
+    // Apply the new order to the creatures that still exist; anything added
+    // while the Re-Organizer was open goes at the end, and anything deleted
+    // in the meantime stays deleted.
+    const byId=new Map(creatures.map(c=>[c.id,c]));
+    const ordered=roItems.map(c=>byId.get(c.id)).filter(Boolean);
+    const placed=new Set(ordered.map(c=>c.id));
+    creatures=ordered.concat(creatures.filter(c=>!placed.has(c.id)));
+    closeReorganizer();
+    renderManager(); render();
+  }
+  function remove(id){ const c=creatures.find(x=>x.id===id); if(!c)return; if(confirm(`Delete "${c.name}"? This cannot be undone.`)){creatures=creatures.filter(x=>x.id!==id);changeLog.deleted.push(c.name);if(currentCreatureId===id)currentCreatureId=null;renderManager();render();} }
+  function updateEditorPreview(){ const c={imageUrl:document.getElementById('cc-inputImage').value.trim(),imageZoom:cropZoom,imagePosX:cropPosX,imagePosY:cropPosY}; const box=document.querySelector('#cc-editorPreview .cc-image'); if(box)box.style.cssText=imageStyle(c); }
+  function openCrop(){
+    const url=document.getElementById('cc-inputImage').value.trim(), img=document.getElementById('cc-cropImage'), hint=document.getElementById('cc-cropHint');
+    if(!url){hint.textContent='Enter an image URL above first, then come back here.';img.style.backgroundImage='none';}else{hint.textContent='Drag the image to reposition it, use the slider to zoom.';img.style.backgroundImage=`url('${url.replace(/'/g,"\\'")}')`;}
+    document.getElementById('cc-cropZoom').value=cropZoom; updateCropPreview(); document.getElementById('cc-cropOverlay').classList.add('show'); centerEditor(document.getElementById('win-creaturecrop'));
+  }
+  function closeCrop(){document.getElementById('cc-cropOverlay').classList.remove('show');}
+  function updateCropPreview(){const img=document.getElementById('cc-cropImage'); if(!img)return; img.style.backgroundSize=cropZoom+'% auto';img.style.backgroundPosition=cropPosX+'% '+cropPosY+'%';document.getElementById('cc-cropZoomLabel').textContent=cropZoom+'%';updateEditorPreview();}
+  function pointer(e){if(e.touches&&e.touches.length)return{x:e.touches[0].clientX,y:e.touches[0].clientY};return{x:e.clientX,y:e.clientY};}
+  function startDrag(e){e.preventDefault();cropDragging=true;const p=pointer(e);dragStartX=p.x;dragStartY=p.y;dragStartPosX=cropPosX;dragStartPosY=cropPosY;document.addEventListener('mousemove',onDrag);document.addEventListener('mouseup',endDrag);document.addEventListener('touchmove',onDrag,{passive:false});document.addEventListener('touchend',endDrag);}
+  function onDrag(e){if(!cropDragging)return;if(e.cancelable)e.preventDefault();const p=pointer(e),vp=document.getElementById('cc-cropViewport'),w=vp.clientWidth||320,h=vp.clientHeight||180;cropPosX=clamp(dragStartPosX-((p.x-dragStartX)/w)*100,0,100);cropPosY=clamp(dragStartPosY-((p.y-dragStartY)/h)*100,0,100);updateCropPreview();}
+  function endDrag(){cropDragging=false;document.removeEventListener('mousemove',onDrag);document.removeEventListener('mouseup',endDrag);document.removeEventListener('touchmove',onDrag);document.removeEventListener('touchend',endDrag);}
+  function saveCrop(){closeCrop();updateEditorPreview();}
+  /* Clean copies of every creature for export — drops the temporary
+     "which gallery image is showing" marker so it isn't saved as data. */
+  function creaturesForExport(){
+    return creatures.map(c=>{ const copy=JSON.parse(JSON.stringify(c)); delete copy._galleryIndex; return copy; });
+  }
+  function creatureExportData(){
+    return { creatures: creaturesForExport() };
+  }
+  function openExport(){
+    const el=document.getElementById('cc-exportText');
+    if(el) el.value=JSON.stringify(creatureExportData(),null,2);
+    const overlay=document.getElementById('cc-exportOverlay');
+    if(overlay) overlay.classList.add('show');
+    const win=document.getElementById('win-creatureexport');
+    if(win) centerEditor(win);
+  }
+  function closeExport(){
+    const overlay=document.getElementById('cc-exportOverlay');
+    if(overlay) overlay.classList.remove('show');
+  }
+  function copyExport(btn){
+    const text=document.getElementById('cc-exportText')?.value||'';
+    const done=()=>{ if(btn){ const old=btn.textContent; btn.textContent='Copied ✓'; setTimeout(()=>btn.textContent=old,1200); } };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(()=>{const ta=document.getElementById('cc-exportText');ta.select();document.execCommand('copy');done();});
+    else { const ta=document.getElementById('cc-exportText');ta.select();document.execCommand('copy');done(); }
+  }
+  function downloadExport(){
+    const text=document.getElementById('cc-exportText')?.value||JSON.stringify(creatureExportData(),null,2);
+    const blob=new Blob([text],{type:'application/json'}), url=URL.createObjectURL(blob), a=document.createElement('a');
+    a.href=url; a.download='creature-codex-data.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  }
+  /* One-line summary of what changed since the last full-HTML export, for
+     the Notes app. Reading it also starts tracking the next batch fresh. */
+  function takeChangeSummary(){
+    const uniq=arr=>[...new Set(arr)], parts=[];
+    if(changeLog.added.length) parts.push(`${uniq(changeLog.added).join(', ')} added`);
+    if(changeLog.edited.length) parts.push(`${uniq(changeLog.edited).join(', ')} edited`);
+    if(changeLog.deleted.length) parts.push(`${uniq(changeLog.deleted).join(', ')} deleted`);
+    changeLog={ added: [], edited: [], deleted: [] };
+    return parts.length ? parts.join(', ') : 'no changes';
+  }
+  /* Writes the current creatures into a full-page HTML string as the new
+     starting data, so reopening the downloaded file shows every creature
+     that exists right now. Returns the updated HTML, or null if the
+     creature list could not be found in the page source. */
+  function bakeIntoHtml(html){
+    // "<" before "/" or "!" is written as < so creature text can never close the surrounding script tag
+    const json=JSON.stringify(creaturesForExport(),null,2).replace(/<(?=[\/!])/g,'\\u003c');
+    const creaturesSrc='let creatures = '+json+';';
+    // matches both the empty starting list and a previously exported (multi-line) list
+    const pattern=/let creatures = (?:\[\];|\[\n[\s\S]*?\n\];)/;
+    if(!pattern.test(html)) return null;
+    // function replacer: creature text containing "$" must not be treated as a replace pattern
+    return html.replace(pattern,()=>creaturesSrc);
+  }
+  /* Same full-desktop backup the Character Portal makes: creatures,
+     characters, worlds, locations and notes are all saved into the file. */
+  function downloadFullHtml(){
+    CharPortal.downloadFullHtml('creature-codex-backup.html');
+  }
+
+  function init(){
+    const vp=document.getElementById('cc-cropViewport'); if(vp){vp.addEventListener('mousedown',startDrag);vp.addEventListener('touchstart',startDrag,{passive:false});}
+    const sl=document.getElementById('cc-cropZoom'); if(sl)sl.addEventListener('input',function(){cropZoom=Number(this.value);updateCropPreview();});
+    render();
+  }
+  function onOpen(){render();}
+  return {init,render,open:onOpen,openCreature,closeCreature,clearFilters,setWorld,setQuickFilter,toggleQuickFilter,updateSideButtons,openManager,renderManager,openEditor,edit,remove,closeEditor,save,updateEditorPreview,openCrop,closeCrop,saveCrop,openGalleryImage:openCreatureGalleryImage,changeGallery,toggleNewChoice,openExport,closeExport,copyExport,downloadExport,downloadFullHtml,bakeIntoHtml,takeChangeSummary,openReorganizer,closeReorganizer,renderReorganizerList,sortReorganizer,resetReorganizerOrder,saveReorganizerOrder};
+})();
+
+CreatureCodex.init();
 
 /* =====================================================
    PaintApp — simple canvas painter
@@ -8349,18 +8640,26 @@ const CharPortal = (function(){
   function logNoteUpdate(){
     const stamp = new Date().toLocaleString();
     const noteLine = `- Last Character Portal update (${stamp}): ${buildChangeSummary()}`;
+    // the Creature Codex keeps its own change list — record it right under the Character Portal line
+    const creatureLine = (typeof CreatureCodex !== 'undefined' && CreatureCodex.takeChangeSummary)
+      ? `- Last Creature Codex update (${stamp}): ${CreatureCodex.takeChangeSummary()}`
+      : '';
     const notesArea = document.getElementById('notesArea');
     if(notesArea){
-      // drop any previous "Last Character Portal update" line, then add the
-      // fresh one at the bottom, separated by a blank line
-      const cleaned = notesArea.value.replace(/\n?- Last Character Portal update.*$/gm, '').replace(/\s+$/,'');
-      notesArea.value = cleaned + '\n\n' + noteLine + '\n';
+      // drop any previous "Last Character Portal update" / "Last Creature
+      // Codex update" lines, then add the fresh ones at the bottom,
+      // separated from the rest by a blank line
+      const cleaned = notesArea.value
+        .replace(/\n?- Last Character Portal update.*$/gm, '')
+        .replace(/\n?- Last Creature Codex update.*$/gm, '')
+        .replace(/\s+$/,'');
+      notesArea.value = cleaned + '\n\n' + noteLine + '\n' + (creatureLine ? creatureLine + '\n' : '');
     }
     // this update has now been recorded — start tracking the next batch of changes fresh
     changeLog = { added: [], edited: [], deleted: [], worldsAdded: [], worldsDeleted: [], locationsAdded: [], locationsDeleted: [] };
   }
 
-  function downloadFullHtml(){
+  function downloadFullHtml(filename){
     // Record what changed since the last export into the Notes app before we
     // snapshot the page, so the exported copy carries the note too.
     logNoteUpdate();
@@ -8410,19 +8709,30 @@ const CharPortal = (function(){
       return copy;
     });
 
-    const worldsSrc = 'let worlds = ' + JSON.stringify(getWorlds()) + ';';
-    const locationsSrc = 'let locations = ' + JSON.stringify(locationsForExport, null, 2) + ';';
-    const charactersSrc = 'let characters = ' + JSON.stringify(charactersForExport, null, 2) + ';';
+    // "<" before "/" or "!" is written as < so saved text can never close the surrounding script tag
+    const safeJson = (value, indent) => JSON.stringify(value, null, indent).replace(/<(?=[\/!])/g, '\\u003c');
+    const worldsSrc = 'let worlds = ' + safeJson(getWorlds()) + ';';
+    const locationsSrc = 'let locations = ' + safeJson(locationsForExport, 2) + ';';
+    const charactersSrc = 'let characters = ' + safeJson(charactersForExport, 2) + ';';
 
-    html = html.replace(/let worlds = \[[^\]]*\];/, worldsSrc);
-    html = html.replace(/let locations = \[[\s\S]*?\];/, locationsSrc);
-    html = html.replace(/let characters = \[[\s\S]*?\n\s*\];/, charactersSrc);
+    // function replacers: saved text containing "$" must not be treated as a replace pattern
+    html = html.replace(/let worlds = \[[^\]]*\];/, () => worldsSrc);
+    html = html.replace(/let locations = \[[\s\S]*?\];/, () => locationsSrc);
+    html = html.replace(/let characters = \[[\s\S]*?\n\s*\];/, () => charactersSrc);
+
+    // The Creature Codex lives on the same desktop, so its creatures are
+    // saved into the same file — whichever app the export was started from.
+    if(typeof CreatureCodex !== 'undefined' && CreatureCodex.bakeIntoHtml){
+      const withCreatures = CreatureCodex.bakeIntoHtml(html);
+      if(withCreatures) html = withCreatures;
+      else alert('Warning: the creatures could not be saved into this backup file.\n\nUse "Download .json" in the Creature Codex export window to keep a copy of them.');
+    }
 
     const blob = new Blob([html], {type:'text/html'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'fake-desktop-backup.html';
+    a.download = (typeof filename === 'string' && filename) ? filename : 'fake-desktop-backup.html';
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -9782,6 +10092,14 @@ const CharGenApp = (function(){
     switchTab };
 })();
 
+</script>
+
+
+<script>
+(function(){
+  const originalOpen=OS.open;
+  OS.open=function(id){ const r=originalOpen.apply(OS,arguments); if(id==='creaturecodex') CreatureCodex.open(); return r; };
+})();
 </script>
 
 </body></html>
